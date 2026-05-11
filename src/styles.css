@@ -212,7 +212,7 @@
   position: relative;
   transform-style: preserve-3d;
   transform: translateZ(500px);
-  --carousel-r: 1150px;
+  --carousel-r: 1080px;
 }
 .carousel3d-rotor {
   width: 100%;
@@ -258,7 +258,7 @@
 }
 @media (max-width: 768px) {
   .carousel3d-stage { height: 320px; perspective: 800px; }
-  .carousel3d-scene { width: 300px; height: 225px; transform: translateZ(380px); --carousel-r: 620px; }
+  .carousel3d-scene { width: 300px; height: 225px; transform: translateZ(380px); --carousel-r: 580px; }
   .carousel3d-card { width: 300px; height: 225px; }
 }
 
