@@ -380,3 +380,14 @@
   100% { transform: skewX(-20deg) translateX(300%); }
 }
 .accel-btn.is-success .accel-label { color: #88ccff; }
+
+/* Chrome blue stats text */
+.hero-stats span {
+  background: linear-gradient(180deg, #6a89b8 0%, #1e3a6b 45%, #4a6fa8 55%, #aac4e8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.4);
+  filter: drop-shadow(0 1px 0 rgba(255,255,255,0.5));
+}
