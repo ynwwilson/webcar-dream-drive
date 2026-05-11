@@ -115,14 +115,14 @@ function Index() {
               className="hero-ui hero-ui-2 text-[#0A2540]"
               style={{
                 fontFamily: "Manrope, sans-serif",
-                fontWeight: 700,
-                fontSize: "clamp(28px, 3.4vw, 46px)",
-                letterSpacing: "-0.03em",
-                lineHeight: 1.04,
+                fontWeight: 900,
+                fontSize: "clamp(26px, 2.9vw, 40px)",
+                letterSpacing: "-0.035em",
+                lineHeight: 1.02,
               }}
             >
               WebCar — Seminovos premium.<br />
-              <span className="inline-block md:pl-12">Desde 2014 transformando vidas!</span>
+              Desde 2014 transformando vidas!
             </h2>
             <p className="hero-ui hero-ui-3 mt-3 max-w-[460px] text-[15px] leading-relaxed text-[#6B7280] md:mt-4">
               Há 12 anos selecionando carros pra quem mora aqui. +1.000 chaves entregues.
