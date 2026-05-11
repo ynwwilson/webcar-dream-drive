@@ -196,23 +196,6 @@ function Index() {
         </div>
       </section>
 
-      {/* PROVA EM NÚMEROS */}
-      <section className="border-y border-[#E5E7EB] bg-white px-4 py-16 md:px-8">
-        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 md:grid-cols-4 md:divide-x md:divide-[#E5E7EB] md:gap-0">
-          {[
-            { n: "1.000+", l: "clientes em Patos" },
-            { n: "12 anos", l: "no mercado" },
-            { n: "4.9 ★", l: "avaliação Google" },
-            { n: "100%", l: "carros revisados" },
-          ].map((s) => (
-            <div key={s.l} className="text-center md:px-6">
-              <p className="font-bold tracking-[-0.02em] text-[#0A0A0A]" style={{ fontSize: "clamp(36px, 5vw, 56px)" }}>{s.n}</p>
-              <p className="mt-2 text-[12px] font-medium uppercase tracking-[0.1em] text-[#6B7280]">{s.l}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* DESTAQUES */}
       <section className="bg-white px-4 py-24 md:px-8 md:py-32">
         <div className="mx-auto max-w-7xl">
