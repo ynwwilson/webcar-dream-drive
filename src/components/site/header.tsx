@@ -11,7 +11,9 @@ const links = [
   { to: "/contato", label: "Contato" },
 ] as const;
 
-export function SiteHeader() {
+type Props = { transparentOnTop?: boolean };
+
+export function SiteHeader({ transparentOnTop = false }: Props) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -24,13 +26,15 @@ export function SiteHeader() {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full bg-white transition-shadow ${
-        scrolled ? "shadow-[0_1px_12px_rgba(10,37,64,0.08)]" : ""
+      className={`fixed top-0 z-50 w-full transition-all duration-300 ${
+        scrolled || !transparentOnTop
+          ? "bg-black/90 backdrop-blur-md border-b border-white/10"
+          : "bg-transparent"
       }`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:px-8">
         <Link to="/" aria-label="WebCar" className="flex items-center">
-          <img src={logo} alt="WebCar" className="h-9 w-auto md:h-10" />
+          <img src={logo} alt="WebCar" className="h-9 w-auto brightness-0 invert md:h-10" />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
@@ -38,8 +42,8 @@ export function SiteHeader() {
             <Link
               key={l.to}
               to={l.to as any}
-              className="text-sm font-medium text-brand/80 transition-colors hover:text-brand"
-              activeProps={{ className: "text-sm font-semibold text-brand" }}
+              className="text-sm font-medium text-white/70 transition-colors hover:text-white"
+              activeProps={{ className: "text-sm font-semibold text-white" }}
             >
               {l.label}
             </Link>
@@ -51,7 +55,7 @@ export function SiteHeader() {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-accent-blue px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:brightness-110 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
+            className="inline-flex items-center gap-2 rounded-full bg-accent-blue px-5 py-2.5 text-sm font-semibold text-white transition-all hover:brightness-110"
           >
             <WhatsAppIcon className="h-4 w-4" />
             WhatsApp
@@ -60,7 +64,7 @@ export function SiteHeader() {
 
         <button
           onClick={() => setOpen((v) => !v)}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-md text-brand md:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-md text-white md:hidden"
           aria-label="Abrir menu"
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -68,14 +72,14 @@ export function SiteHeader() {
       </div>
 
       {open && (
-        <div className="border-t bg-white md:hidden">
+        <div className="border-t border-white/10 bg-black md:hidden">
           <div className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-3">
             {links.map((l) => (
               <Link
                 key={l.to}
                 to={l.to as any}
                 onClick={() => setOpen(false)}
-                className="rounded-md px-3 py-2.5 text-sm font-medium text-brand/80 hover:bg-secondary"
+                className="rounded-md px-3 py-2.5 text-sm font-medium text-white/80 hover:bg-white/5"
               >
                 {l.label}
               </Link>
