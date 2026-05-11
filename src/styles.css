@@ -342,19 +342,20 @@
 }
 .accel-speed {
   font-size: 22px; font-weight: 800; line-height: 1;
-  background: linear-gradient(180deg, #ffffff 0%, #b8c8e0 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #f0f4ff 45%, #c8d4ec 100%);
   -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent; color: transparent;
-  text-shadow: 0 1px 0 rgba(0,0,0,0.4);
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.45)) drop-shadow(0 0 6px rgba(255,255,255,0.25));
   font-variant-numeric: tabular-nums; letter-spacing: -0.02em;
 }
 .accel-speed span {
-  font-size: 10px; color: #8aa6d0; -webkit-text-fill-color: #8aa6d0;
+  font-size: 10px; color: #e6ecf7; -webkit-text-fill-color: #e6ecf7;
   font-weight: 600; letter-spacing: 1.5px; margin-left: 5px;
 }
 .accel-label {
-  font-size: 8px; color: #6a7a95; text-transform: uppercase; letter-spacing: 3px;
+  font-size: 8px; color: #d4dcec; text-transform: uppercase; letter-spacing: 3px;
   margin-top: 3px; font-weight: 600;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.5);
 }
 .accel-btn.is-struggling { animation: accelShake 0.1s infinite; border-color: #ff0000; box-shadow: 0 0 40px rgba(255,0,0,0.6), inset 0 0 20px rgba(255,0,0,0.2); }
 .accel-btn.is-struggling .accel-fill { background: linear-gradient(90deg, #660000, #ff0000, #ff4444); box-shadow: inset 0 0 15px rgba(255,255,255,0.8), 0 0 40px rgba(255,0,0,0.9); }
