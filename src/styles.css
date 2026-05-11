@@ -293,12 +293,3 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 .hero-stats { opacity: 0; animation: hero-stats-in 500ms ease-out 1600ms forwards; }
-
-.hero-grid {
-  grid-template-rows: 80px 1fr 280px;
-}
-@media (max-width: 767px) {
-  .hero-grid {
-    grid-template-rows: 60px 1fr 380px;
-  }
-}
