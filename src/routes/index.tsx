@@ -109,12 +109,31 @@ function Index() {
               WEBCAR
             </span>
           </div>
+          {/* Headline sobre o W do WEBCAR */}
+          <div className="absolute left-6 top-5 z-[4] max-w-[calc(100%-48px)] text-left md:left-16 md:top-8 md:max-w-[700px] lg:top-10">
+            <h2
+              className="hero-ui hero-ui-2 text-[#0A2540]"
+              style={{
+                fontFamily: "Manrope, sans-serif",
+                fontWeight: 700,
+                fontSize: "clamp(28px, 3.4vw, 46px)",
+                letterSpacing: "-0.03em",
+                lineHeight: 1.04,
+              }}
+            >
+              Em Patos, há um padrão.<br />
+              <span className="inline-block md:pl-12">— WebCar.</span>
+            </h2>
+            <p className="hero-ui hero-ui-3 mt-3 max-w-[460px] text-[15px] leading-relaxed text-[#6B7280] md:mt-4">
+              Há 12 anos selecionando carros pra quem mora aqui. +1.000 chaves entregues.
+            </p>
+          </div>
           {/* Porsche */}
           <img
             src="/porsche.png"
             alt=""
             className="hero-porsche-img absolute inset-0 h-full w-full"
-            style={{ zIndex: 3, objectFit: "contain", objectPosition: "center" }}
+            style={{ zIndex: 3, objectFit: "contain", objectPosition: "60% 62%" }}
           />
           {/* Labels verticais — desktop only */}
           <div
@@ -138,28 +157,10 @@ function Index() {
         {/* ZONA BOTTOM — texto + CTAs + stats */}
         <div
           className="relative z-10 flex flex-col justify-between gap-6 bg-white/0 px-6 py-6 md:gap-6 md:px-16 md:py-8"
-          style={{ height: 280 }}
+          style={{ height: 156 }}
         >
-          {/* Linha 1: headline + CTAs */}
-          <div className="flex flex-col items-center gap-6 text-center md:flex-row md:items-end md:justify-between md:text-left">
-            <div className="max-w-[600px]">
-              <h2
-                className="hero-ui hero-ui-2 text-[#0A2540]"
-                style={{
-                  fontFamily: "Manrope, sans-serif",
-                  fontWeight: 700,
-                  fontSize: "clamp(26px, 4vw, 52px)",
-                  letterSpacing: "-0.03em",
-                  lineHeight: 1.1,
-                }}
-              >
-                Em Patos, há um padrão.<br />
-                <span className="inline-block md:pl-12">— WebCar.</span>
-              </h2>
-              <p className="hero-ui hero-ui-3 mt-3 text-[15px] text-[#6B7280] md:mt-4" style={{ maxWidth: 500 }}>
-                Há 12 anos selecionando carros pra quem mora aqui. +1.000 chaves entregues.
-              </p>
-            </div>
+          {/* Linha 1: CTAs */}
+          <div className="flex items-center justify-center md:justify-end">
             <div className="hero-ui hero-ui-4 flex flex-col items-center gap-3 md:items-end">
               <Link
                 to="/estoque"
