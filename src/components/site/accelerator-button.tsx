@@ -23,14 +23,14 @@ export function AcceleratorButton({ to = "/estoque", label = "Ver carros" }: { t
         if (holding) {
           // accel: easier early, harder near redline
           const remaining = MAX - s;
-          const accelRate = s < REDLINE ? 90 : 25; // km/h per second
+          const accelRate = s < REDLINE ? 220 : 70; // km/h per second
           next = Math.min(MAX, s + accelRate * dt);
           if (s >= REDLINE && next < MAX) {
-            next = s + 8 * dt; // crawls
+            next = s + 28 * dt; // crawls
           }
           if (next >= MAX) next = MAX;
         } else {
-          next = Math.max(0, s - 140 * dt);
+          next = Math.max(0, s - 260 * dt);
         }
         return next;
       });
