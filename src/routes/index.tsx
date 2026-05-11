@@ -54,15 +54,16 @@ function Index() {
   // Parallax — strong, clamped to viewport
   const vh = typeof window !== "undefined" ? window.innerHeight : 900;
   const p = Math.min(scrollY, vh) / vh; // 0 → 1
-  const porscheY = p * 600;       // moves down much faster
-  const webcarY = p * -520;       // moves up strongly
-  const headlineY = p * -380;     // moves up
-  const ctasY = p * 460;          // moves down
+  // Tudo sobe junto, em velocidades diferentes (parallax forte)
+  const porscheY = p * -700;
+  const webcarY = p * -520;
+  const headlineY = p * -900;
+  const ctasY = p * -780;
+  const headerY = p * -1100;
+  const labelLeftY = p * -650;
+  const labelRightY = p * -650;
+  const statsY = p * -600;
   const heroOpacity = 1 - p * 0.4;
-  const headerY = p * -260;       // header up
-  const labelLeftY = p * -340;    // vertical label left up
-  const labelRightY = p * 340;    // vertical label right down
-  const statsY = p * 500;         // bottom stats down
 
   const navLinks = [
     { to: "/estoque", label: "Estoque" },
@@ -176,7 +177,7 @@ function Index() {
               zIndex: 3,
               objectFit: "contain",
               objectPosition: "60% 62%",
-              transform: `translate3d(0, ${porscheY}px, 0) scale(${1 + p * 0.25})`,
+              transform: `translate3d(0, ${porscheY}px, 0) scale(${1 + p * 0.15})`,
             }}
           />
           {/* Labels verticais — desktop only */}
