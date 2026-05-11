@@ -212,7 +212,7 @@
   position: relative;
   transform-style: preserve-3d;
   transform: translateZ(500px);
-  --carousel-r: 620px;
+  --carousel-r: 820px;
 }
 .carousel3d-rotor {
   width: 100%;
@@ -227,7 +227,7 @@
   width: 560px;
   height: 420px;
   background-color: #fff;
-  border-radius: 20px;
+  border-radius: 32px;
   overflow: hidden;
   box-shadow: 0 25px 50px rgba(0,0,0,0.15), 0 5px 15px rgba(0,0,0,0.1);
   transform-origin: center;
@@ -240,7 +240,7 @@
   object-fit: cover;
   pointer-events: none;
   user-select: none;
-  border-radius: 20px;
+  border-radius: 32px;
   display: block;
 }
 .carousel3d-card::after {
@@ -249,7 +249,7 @@
   inset: 0;
   background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 40%, rgba(0,0,0,0.1) 100%);
   pointer-events: none;
-  border-radius: 20px;
+  border-radius: 32px;
   border: 1px solid rgba(255,255,255,0.5);
 }
 @keyframes carousel3d-spin {
@@ -258,7 +258,7 @@
 }
 @media (max-width: 768px) {
   .carousel3d-stage { height: 320px; perspective: 800px; }
-  .carousel3d-scene { width: 300px; height: 225px; transform: translateZ(380px); --carousel-r: 340px; }
+  .carousel3d-scene { width: 300px; height: 225px; transform: translateZ(380px); --carousel-r: 440px; }
   .carousel3d-card { width: 300px; height: 225px; }
 }
 
