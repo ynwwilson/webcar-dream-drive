@@ -7,6 +7,11 @@ import { CarCard } from "@/components/site/car-card";
 import { WhatsAppIcon, WHATSAPP_URL } from "@/components/site/whatsapp-icon";
 import { AcceleratorButton } from "@/components/site/accelerator-button";
 import { cars } from "@/data/cars";
+import cliente1 from "@/assets/cliente-1.png";
+import cliente2 from "@/assets/cliente-2.png";
+import cliente3 from "@/assets/cliente-3.png";
+import cliente4 from "@/assets/cliente-4.png";
+import cliente5 from "@/assets/cliente-5.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -24,8 +29,9 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
+const clientPhotos = [cliente1, cliente2, cliente3, cliente4, cliente5];
 const clientBanners = Array.from({ length: 8 }).map(
-  (_, i) => `https://picsum.photos/seed/webcar-banner-${i + 1}/600/280`,
+  (_, i) => clientPhotos[i % clientPhotos.length],
 );
 
 function Index() {
