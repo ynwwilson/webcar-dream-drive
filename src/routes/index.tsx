@@ -93,7 +93,7 @@ function Index() {
             style={{ zIndex: 1, background: "linear-gradient(180deg, #FFFFFF 0%, #EEF1F5 100%)" }}
           />
           {/* WEBCAR */}
-          <div className="absolute inset-0 flex items-center justify-center" style={{ zIndex: 2, transform: "translate(-6%, -8%)" }}>
+          <div className="absolute inset-0 flex items-center justify-center" style={{ zIndex: 2 }}>
             <span
               aria-hidden
               className="hero-webcar-text pointer-events-none select-none text-center"
