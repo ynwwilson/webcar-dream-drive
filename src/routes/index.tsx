@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/site/header";
 import { SiteFooter } from "@/components/site/footer";
 import { CarCard } from "@/components/site/car-card";
 import { WhatsAppIcon, WHATSAPP_URL } from "@/components/site/whatsapp-icon";
+import { AcceleratorButton } from "@/components/site/accelerator-button";
 import { cars } from "@/data/cars";
 
 export const Route = createFileRoute("/")({
@@ -157,12 +158,7 @@ function Index() {
             className="hero-ui hero-ui-4 absolute z-[5] flex flex-col items-center gap-3 md:items-end"
             style={{ right: "3%", bottom: "8%" }}
           >
-            <Link
-              to="/estoque"
-              className="inline-flex items-center justify-center rounded-full bg-[#2E7CF6] px-12 py-5 text-lg font-semibold text-white transition-colors hover:bg-[#1E5FCC]"
-            >
-              Ver estoque →
-            </Link>
+            <AcceleratorButton to="/estoque" label="Ver carros" />
             <a
               href={WHATSAPP_URL}
               target="_blank"
