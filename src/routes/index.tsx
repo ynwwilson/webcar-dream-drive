@@ -204,13 +204,13 @@ function Index() {
         >
           {/* Linha 2: stats bar */}
           <div className="hero-stats border-y border-[#E5E7EB] py-2.5">
-            <div className="font-condensed hidden flex-wrap items-center justify-around gap-x-6 gap-y-2 text-[14px] text-[#0A2540] md:flex" style={{ letterSpacing: "0.04em" }}>
+            <div className="font-fine hidden flex-wrap items-center justify-around gap-x-6 gap-y-2 text-[12px] text-[#0A2540] md:flex">
               <span>1.000+ Entregas</span>
               <span>4.9 ★ Google</span>
               <span>100% Revisados</span>
               <span>12 Anos em Patos</span>
             </div>
-            <div className="font-condensed grid grid-cols-2 gap-y-2 text-center text-[12px] text-[#0A2540] md:hidden" style={{ letterSpacing: "0.04em" }}>
+            <div className="font-fine grid grid-cols-2 gap-y-2 text-center text-[11px] text-[#0A2540] md:hidden">
               <span>1.000+ Entregas</span>
               <span>4.9 ★ Google</span>
               <span>100% Revisados</span>
