@@ -48,10 +48,17 @@ function Index() {
     <div className="min-h-screen bg-white text-[#0A0A0A]">
       {scrolled && <SiteHeader transparentOnTop={false} />}
 
-      {/* HERO — 3 zonas verticais (TOP / MID / BOTTOM) */}
-      <section className="hero-webcar relative flex h-[100vh] w-full flex-col overflow-hidden bg-white">
-        {/* ZONA TOP — header */}
-        <header className="hero-ui hero-ui-1 relative z-10 flex h-20 items-center justify-between px-5 md:px-8">
+      {/* HERO — Grid unificado (header / carro / texto) em 100vh */}
+      <section
+        className="hero-webcar hero-grid relative w-full overflow-hidden"
+        style={{
+          height: "100vh",
+          display: "grid",
+          background: "linear-gradient(180deg, #FFFFFF 0%, #EEF1F5 100%)",
+        }}
+      >
+        {/* LINHA 1 — HEADER */}
+        <header className="hero-ui hero-ui-1 relative z-10 flex items-center justify-between px-5 md:px-8">
           <div className="flex items-center gap-4">
             <Link to="/" className="font-bold text-[#0A2540]" style={{ fontFamily: "Manrope, sans-serif", fontSize: 22, letterSpacing: "-0.02em" }}>
               WEBCAR
@@ -85,22 +92,17 @@ function Index() {
           </button>
         </header>
 
-        {/* ZONA MID — carro + WEBCAR + labels verticais */}
-        <div className="relative flex-1 overflow-hidden">
-          {/* fundo */}
-          <div
-            className="hero-fade-bg absolute inset-0"
-            style={{ zIndex: 1, background: "linear-gradient(180deg, #FFFFFF 0%, #EEF1F5 100%)" }}
-          />
+        {/* LINHA 2 — ZONA DO CARRO */}
+        <div className="relative overflow-hidden">
           {/* WEBCAR */}
-          <div className="absolute inset-0 flex items-center justify-center" style={{ zIndex: 2, transform: "translateY(-12%)" }}>
+          <div className="absolute inset-0 flex items-center justify-center" style={{ zIndex: 2 }}>
             <span
               aria-hidden
               className="hero-webcar-text pointer-events-none select-none text-center"
               style={{
                 fontFamily: "Manrope, system-ui, sans-serif",
                 fontWeight: 800,
-                fontSize: "clamp(70px, 22vw, 380px)",
+                fontSize: "clamp(140px, 22vw, 380px)",
                 letterSpacing: "-0.05em",
                 lineHeight: 0.9,
                 color: "#DDE3EC",
@@ -135,10 +137,9 @@ function Index() {
           </div>
         </div>
 
-        {/* ZONA BOTTOM — texto + CTAs + stats */}
+        {/* LINHA 3 — ZONA TEXTO/CTA/STATS */}
         <div
-          className="relative z-10 flex flex-col justify-between gap-6 bg-white/0 px-6 py-6 md:gap-6 md:px-16 md:py-8"
-          style={{ height: 280 }}
+          className="relative z-10 flex flex-col justify-between gap-6 px-6 py-6 md:gap-6 md:px-16 md:py-6"
         >
           {/* Linha 1: headline + CTAs */}
           <div className="flex flex-col items-center gap-6 text-center md:flex-row md:items-end md:justify-between md:text-left">
