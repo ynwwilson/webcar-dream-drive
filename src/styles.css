@@ -199,7 +199,7 @@
 /* ===== 3D Concave Banner Carousel (clientes) ===== */
 .carousel3d-stage {
   perspective: 1000px;
-  height: 520px;
+  height: 320px;
   width: 100%;
   overflow: hidden;
   display: flex;
@@ -257,7 +257,7 @@
   to   { transform: rotateY(360deg); }
 }
 @media (max-width: 768px) {
-  .carousel3d-stage { height: 360px; perspective: 800px; }
+  .carousel3d-stage { height: 200px; perspective: 800px; }
   .carousel3d-scene { width: 320px; height: 170px; transform: translateZ(380px); --carousel-r: 400px; }
   .carousel3d-card { width: 320px; height: 170px; }
 }
