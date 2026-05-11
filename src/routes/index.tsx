@@ -4,7 +4,6 @@ import { SiteFooter } from "@/components/site/footer";
 import { CarCard } from "@/components/site/car-card";
 import { WhatsAppIcon, WHATSAPP_URL } from "@/components/site/whatsapp-icon";
 import { cars } from "@/data/cars";
-import heroImg from "@/assets/hero-porsche.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -22,8 +21,6 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const HERO_IMG = heroImg;
-
 const clientPhotos = Array.from({ length: 20 }).map(
   (_, i) => `https://i.pravatar.cc/240?img=${(i % 70) + 1}`,
 );
@@ -35,13 +32,69 @@ function Index() {
     <div className="min-h-screen bg-white text-[#0A0A0A]">
       <SiteHeader transparentOnTop />
 
-      {/* HERO — light, persuasivo */}
-      <section className="relative h-[100svh] w-full overflow-hidden">
-        <img
-          src={HERO_IMG}
-          alt="Porsche premium"
-          className="absolute inset-0 h-full w-full object-cover"
+      {/* HERO — WEBCAR atrás + Porsche por cima */}
+      <section className="hero-webcar relative h-[100svh] w-full overflow-hidden">
+        {/* Camada 1 — fundo */}
+        <div
+          className="absolute inset-0 hero-fade-bg"
+          style={{ zIndex: 1, background: "linear-gradient(180deg, #FFFFFF 0%, #EEF1F5 100%)" }}
         />
+        {/* Camada 2 — texto gigante */}
+        <h1
+          aria-hidden
+          className="hero-webcar-text pointer-events-none absolute left-1/2 top-1/2 w-full -translate-x-1/2 -translate-y-1/2 text-center"
+          style={{
+            zIndex: 2,
+            fontFamily: "Manrope, system-ui, sans-serif",
+            fontWeight: 900,
+            fontSize: "clamp(80px, 28vw, 420px)",
+            lineHeight: 0.9,
+            color: "#DDE3EC",
+          }}
+        >
+          WEBCAR
+        </h1>
+        {/* Camada 3 — Porsche */}
+        <img
+          src="/porsche.png"
+          alt=""
+          className="hero-porsche-img absolute inset-0 h-full w-full"
+          style={{ zIndex: 3, objectFit: "contain", objectPosition: "center" }}
+        />
+        {/* Camada 4 — UI inferior */}
+        <div
+          className="absolute bottom-12 left-1/2 w-full max-w-3xl -translate-x-1/2 px-6 text-center md:bottom-20"
+          style={{ zIndex: 4 }}
+        >
+          <p className="hero-ui hero-ui-1 text-[12px] font-medium uppercase text-[#6B7280]" style={{ letterSpacing: "0.3em" }}>
+            Revenda premium · Patos de Minas/MG
+          </p>
+          <h2
+            className="hero-ui hero-ui-2 mt-4 font-bold text-[#0A2540]"
+            style={{ fontFamily: "Manrope, system-ui, sans-serif", fontSize: "clamp(24px, 4vw, 44px)", letterSpacing: "-0.02em", lineHeight: 1.05 }}
+          >
+            O carro certo. Sem dor de cabeça.
+          </h2>
+          <p className="hero-ui hero-ui-3 mt-3 text-base text-[#6B7280] md:text-lg">
+            Seminovos selecionados. Patos de Minas/MG.
+          </p>
+          <div className="hero-ui hero-ui-4 mt-8 flex flex-col items-center justify-center gap-3 md:flex-row md:gap-4">
+            <Link
+              to="/estoque"
+              className="inline-flex w-full max-w-[320px] items-center justify-center rounded-full bg-[#2E7CF6] px-8 py-4 text-sm font-semibold text-white transition-colors hover:bg-[#1E5FCC] md:w-auto"
+            >
+              Ver estoque
+            </Link>
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex w-full max-w-[320px] items-center justify-center rounded-full border border-[#0A2540] bg-transparent px-8 py-4 text-sm font-semibold text-[#0A2540] transition-colors hover:bg-[#0A2540] hover:text-white md:w-auto"
+            >
+              Falar no WhatsApp
+            </a>
+          </div>
+        </div>
       </section>
 
       {/* PROVA EM NÚMEROS */}

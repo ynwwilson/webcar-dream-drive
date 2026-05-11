@@ -256,3 +256,33 @@
   outline: none;
 }
 .filter-select:focus { border-color: var(--accent-blue); }
+
+/* Hero WEBCAR animations */
+@keyframes hero-bg-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes hero-text-in {
+  from { opacity: 0; letter-spacing: -0.02em; }
+  to   { opacity: 1; letter-spacing: -0.05em; }
+}
+@keyframes hero-porsche-in {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes hero-ui-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-fade-bg { opacity: 0; animation: hero-bg-fade 400ms ease-out forwards; }
+.hero-webcar-text {
+  opacity: 0;
+  letter-spacing: -0.05em;
+  animation: hero-text-in 400ms ease-out 300ms forwards;
+}
+.hero-porsche-img {
+  opacity: 0;
+  animation: hero-porsche-in 500ms ease-out 600ms forwards;
+}
+.hero-ui { opacity: 0; animation: hero-ui-in 500ms ease-out forwards; }
+.hero-ui-1 { animation-delay: 900ms; }
+.hero-ui-2 { animation-delay: 1050ms; }
+.hero-ui-3 { animation-delay: 1200ms; }
+.hero-ui-4 { animation-delay: 1350ms; }
