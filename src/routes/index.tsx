@@ -59,6 +59,10 @@ function Index() {
   const headlineY = p * -380;     // moves up
   const ctasY = p * 460;          // moves down
   const heroOpacity = 1 - p * 0.4;
+  const headerY = p * -260;       // header up
+  const labelLeftY = p * -340;    // vertical label left up
+  const labelRightY = p * 340;    // vertical label right down
+  const statsY = p * 500;         // bottom stats down
 
   const navLinks = [
     { to: "/estoque", label: "Estoque" },
@@ -77,7 +81,10 @@ function Index() {
         style={{ background: "linear-gradient(180deg, #FFFFFF 0%, #EEF1F5 100%)" }}
       >
         {/* ZONA TOP — header */}
-        <header className="hero-ui hero-ui-1 relative z-10 flex h-20 items-center justify-between px-5 md:px-8">
+        <header
+          className="hero-ui hero-ui-1 relative z-10 flex h-20 items-center justify-between px-5 will-change-transform md:px-8"
+          style={{ transform: `translate3d(0, ${headerY}px, 0)`, opacity: heroOpacity }}
+        >
           <div className="flex items-center gap-4">
             <Link to="/" className="font-bold text-[#0A2540]" style={{ fontFamily: "Manrope, sans-serif", fontSize: 22, letterSpacing: "-0.02em" }}>
               WEBCAR
@@ -175,15 +182,15 @@ function Index() {
           {/* Labels verticais — desktop only */}
           <div
             className="hero-ui hero-ui-1 absolute top-1/2 hidden md:block"
-            style={{ left: 32, transform: "translateY(-50%) rotate(180deg)", writingMode: "vertical-rl", zIndex: 4 }}
+            style={{ left: 32, transform: `translate3d(0, calc(-50% + ${labelLeftY}px), 0) rotate(180deg)`, writingMode: "vertical-rl", zIndex: 4, opacity: heroOpacity }}
           >
             <span className="text-[10px] font-medium uppercase text-[#6B7280]" style={{ letterSpacing: "0.4em" }}>
               Edição 01
             </span>
           </div>
           <div
-            className="hero-ui hero-ui-1 absolute top-1/2 hidden -translate-y-1/2 md:block"
-            style={{ right: 32, writingMode: "vertical-rl", zIndex: 4 }}
+            className="hero-ui hero-ui-1 absolute top-1/2 hidden md:block"
+            style={{ right: 32, transform: `translate3d(0, calc(-50% + ${labelRightY}px), 0)`, writingMode: "vertical-rl", zIndex: 4, opacity: heroOpacity }}
           >
             <span className="text-[10px] font-medium uppercase text-[#6B7280]" style={{ letterSpacing: "0.4em" }}>
               Vol. 12 — 2026
@@ -208,8 +215,8 @@ function Index() {
 
         {/* ZONA BOTTOM — texto + CTAs + stats */}
         <div
-          className="relative z-10 flex flex-col justify-end bg-white/0 px-6 md:px-16"
-          style={{ height: 56 }}
+          className="relative z-10 flex flex-col justify-end bg-white/0 px-6 will-change-transform md:px-16"
+          style={{ height: 56, transform: `translate3d(0, ${statsY}px, 0)`, opacity: heroOpacity }}
         >
           {/* Linha 2: stats bar */}
           <div className="hero-stats border-y border-[#E5E7EB] py-2.5">
