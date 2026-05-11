@@ -25,6 +25,7 @@ export function SiteHeader({ transparentOnTop = false }: Props) {
   }, []);
 
   return (
+    <>
     <header
       className={`fixed top-0 z-50 w-full transition-all duration-300 ${
         scrolled || !transparentOnTop
@@ -97,5 +98,7 @@ export function SiteHeader({ transparentOnTop = false }: Props) {
         </div>
       )}
     </header>
+    {!transparentOnTop && <div className="h-16" aria-hidden />}
+    </>
   );
 }
