@@ -24,8 +24,8 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const clientPhotos = Array.from({ length: 20 }).map(
-  (_, i) => `https://i.pravatar.cc/240?img=${(i % 70) + 1}`,
+const clientBanners = Array.from({ length: 8 }).map(
+  (_, i) => `https://picsum.photos/seed/webcar-banner-${i + 1}/600/280`,
 );
 
 function Index() {
@@ -307,13 +307,13 @@ function Index() {
         <div className="carousel3d-stage mt-16">
           <div className="carousel3d-scene">
             <div className="carousel3d-rotor">
-              {clientPhotos.slice(0, 14).map((src, i, arr) => {
+              {clientBanners.map((src, i, arr) => {
                 const angle = (360 / arr.length) * i;
                 return (
                   <div
                     key={i}
                     className="carousel3d-card"
-                    style={{ transform: `rotateY(${angle}deg) translateZ(700px) rotateY(180deg)` }}
+                    style={{ transform: `rotateY(${angle}deg) translateZ(var(--carousel-r)) rotateY(180deg)` }}
                   >
                     <img src={src} alt="" loading="lazy" />
                   </div>
