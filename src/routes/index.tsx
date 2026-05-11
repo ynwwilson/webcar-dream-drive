@@ -152,33 +152,33 @@ function Index() {
               Vol. 12 — 2026
             </span>
           </div>
+          {/* CTAs — abaixo do "R" de WEBCAR */}
+          <div
+            className="hero-ui hero-ui-4 absolute z-[5] flex flex-col items-center gap-3 md:items-end"
+            style={{ right: "10%", bottom: "8%" }}
+          >
+            <Link
+              to="/estoque"
+              className="inline-flex items-center justify-center rounded-full bg-[#2E7CF6] px-8 py-4 text-base font-semibold text-white transition-colors hover:bg-[#1E5FCC]"
+            >
+              Ver estoque →
+            </Link>
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="text-sm font-semibold text-[#0A2540] underline underline-offset-4 hover:opacity-70"
+            >
+              Falar no WhatsApp →
+            </a>
+          </div>
         </div>
 
         {/* ZONA BOTTOM — texto + CTAs + stats */}
         <div
           className="relative z-10 flex flex-col justify-between gap-6 bg-white/0 px-6 py-6 md:gap-6 md:px-16 md:py-8"
-          style={{ height: 156 }}
+          style={{ height: 80 }}
         >
-          {/* Linha 1: CTAs */}
-          <div className="flex items-center justify-center md:justify-end">
-            <div className="hero-ui hero-ui-4 flex flex-col items-center gap-3 md:items-end">
-              <Link
-                to="/estoque"
-                className="inline-flex w-full max-w-[280px] items-center justify-center rounded-full bg-[#2E7CF6] px-8 py-4 text-base font-semibold text-white transition-colors hover:bg-[#1E5FCC] md:w-auto"
-              >
-                Ver estoque →
-              </Link>
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="text-sm font-semibold text-[#0A2540] underline underline-offset-4 hover:opacity-70"
-              >
-                Falar no WhatsApp →
-              </a>
-            </div>
-          </div>
-
           {/* Linha 2: stats bar */}
           <div className="hero-stats border-y border-[#E5E7EB] py-3">
             <div className="hidden flex-wrap items-center justify-around gap-x-6 gap-y-2 text-[11px] font-medium uppercase text-[#6B7280] md:flex" style={{ letterSpacing: "0.2em" }}>
