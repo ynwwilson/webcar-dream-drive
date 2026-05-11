@@ -5,6 +5,8 @@
 
 @custom-variant dark (&:is(.dark *));
 
+html, body { overflow-x: hidden; }
+
 /*
  * Design system definition.
  *
