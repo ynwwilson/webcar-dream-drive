@@ -172,11 +172,11 @@ function Index() {
 
         {/* ZONA BOTTOM — texto + CTAs + stats */}
         <div
-          className="relative z-10 flex flex-col justify-between gap-6 bg-white/0 px-6 py-6 md:gap-6 md:px-16 md:py-8"
-          style={{ height: 80 }}
+          className="relative z-10 flex flex-col justify-end bg-white/0 px-6 md:px-16"
+          style={{ height: 56 }}
         >
           {/* Linha 2: stats bar */}
-          <div className="hero-stats border-y border-[#E5E7EB] py-3">
+          <div className="hero-stats border-y border-[#E5E7EB] py-2.5">
             <div className="hidden flex-wrap items-center justify-around gap-x-6 gap-y-2 text-[11px] font-medium uppercase text-[#6B7280] md:flex" style={{ letterSpacing: "0.2em" }}>
               <span>1.000+ Entregas</span>
               <span>4.9 ★ Google</span>
