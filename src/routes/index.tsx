@@ -54,17 +54,16 @@ function Index() {
   // Parallax — strong, clamped to viewport
   const vh = typeof window !== "undefined" ? window.innerHeight : 900;
   const p = Math.min(scrollY, vh) / vh; // 0 → 1
-  // Tudo sobe junto, em velocidades diferentes (parallax forte)
-  // Carro usa vh-based para ficar estável em diferentes telas
-  const porscheY = p * vh * -0.55;
-  const webcarY = p * -520;
-  const headlineY = p * -900;
-  const ctasY = p * -780;
-  const headerY = p * -1100;
-  const labelLeftY = p * -650;
-  const labelRightY = p * -650;
-  const statsY = p * -600;
-  const heroOpacity = 1 - p * 0.4;
+  // Parallax suave, todos sobem juntos em vh-based (estável em qualquer tela)
+  const porscheY = p * vh * -0.35;
+  const webcarY = p * vh * -0.25;
+  const headlineY = p * vh * -0.45;
+  const ctasY = p * vh * -0.35;
+  const headerY = p * vh * -0.55;
+  const labelLeftY = p * vh * -0.35;
+  const labelRightY = p * vh * -0.35;
+  const statsY = p * vh * -0.30;
+  const heroOpacity = 1 - p * 0.35;
 
   const navLinks = [
     { to: "/estoque", label: "Estoque" },
