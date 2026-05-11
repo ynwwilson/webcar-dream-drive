@@ -51,19 +51,11 @@ function Index() {
     };
   }, []);
 
-  // Parallax — strong, clamped to viewport
+  // Parallax suave e sincronizado: todos os elementos do hero usam o mesmo eixo.
   const vh = typeof window !== "undefined" ? window.innerHeight : 900;
   const p = Math.min(scrollY, vh) / vh; // 0 → 1
-  // Parallax suave, todos sobem juntos em vh-based (estável em qualquer tela)
-  const porscheY = p * vh * -0.35;
-  const webcarY = p * vh * -0.25;
-  const headlineY = p * vh * -0.45;
-  const ctasY = p * vh * -0.35;
-  const headerY = p * vh * -0.55;
-  const labelLeftY = p * vh * -0.35;
-  const labelRightY = p * vh * -0.35;
-  const statsY = p * vh * -0.30;
-  const heroOpacity = 1 - p * 0.35;
+  const heroY = p * vh * -0.12;
+  const heroOpacity = 1 - p * 0.18;
 
   const navLinks = [
     { to: "/estoque", label: "Estoque" },
@@ -84,7 +76,7 @@ function Index() {
         {/* ZONA TOP — header */}
         <header
           className="hero-ui hero-ui-1 relative z-10 flex h-20 items-center justify-between px-5 will-change-transform md:px-8"
-          style={{ transform: `translate3d(0, ${headerY}px, 0)`, opacity: heroOpacity }}
+            style={{ transform: `translate3d(0, ${heroY}px, 0)`, opacity: heroOpacity }}
         >
           <div className="flex items-center gap-4">
             <Link to="/" className="font-bold text-[#0A2540]" style={{ fontFamily: "Manrope, sans-serif", fontSize: 22, letterSpacing: "-0.02em" }}>
@@ -129,7 +121,7 @@ function Index() {
           {/* WEBCAR */}
           <div
             className="absolute inset-0 flex items-center justify-center will-change-transform"
-            style={{ zIndex: 2, transform: `translate3d(0, ${webcarY}px, 0)`, opacity: heroOpacity }}
+            style={{ zIndex: 2, transform: `translate3d(0, ${heroY}px, 0)`, opacity: heroOpacity }}
           >
             <span
               aria-hidden
@@ -149,7 +141,7 @@ function Index() {
           {/* Headline sobre o W do WEBCAR */}
           <div
             className="absolute left-6 top-5 z-[4] max-w-[calc(100%-48px)] text-left will-change-transform md:left-16 md:top-8 md:max-w-[700px] lg:top-10"
-            style={{ transform: `translate3d(0, ${headlineY}px, 0)`, opacity: heroOpacity }}
+            style={{ transform: `translate3d(0, ${heroY}px, 0)`, opacity: heroOpacity }}
           >
             <h2
               className="hero-ui hero-ui-2 text-[#0A2540]"
@@ -177,14 +169,14 @@ function Index() {
               zIndex: 3,
               objectFit: "contain",
               objectPosition: "60% 62%",
-              transform: `translate3d(0, ${porscheY}px, 0) scale(${1 + p * 0.06})`,
+              transform: `translate3d(0, ${heroY}px, 0)`,
               transformOrigin: "60% 62%",
             }}
           />
           {/* Labels verticais — desktop only */}
           <div
             className="hero-ui hero-ui-1 absolute top-1/2 hidden md:block"
-            style={{ left: 32, transform: `translate3d(0, calc(-50% + ${labelLeftY}px), 0) rotate(180deg)`, writingMode: "vertical-rl", zIndex: 4, opacity: heroOpacity }}
+            style={{ left: 32, transform: `translate3d(0, calc(-50% + ${heroY}px), 0) rotate(180deg)`, writingMode: "vertical-rl", zIndex: 4, opacity: heroOpacity }}
           >
             <span className="text-[10px] font-medium uppercase text-[#6B7280]" style={{ letterSpacing: "0.4em" }}>
               Edição 01
@@ -192,7 +184,7 @@ function Index() {
           </div>
           <div
             className="hero-ui hero-ui-1 absolute top-1/2 hidden md:block"
-            style={{ right: 32, transform: `translate3d(0, calc(-50% + ${labelRightY}px), 0)`, writingMode: "vertical-rl", zIndex: 4, opacity: heroOpacity }}
+            style={{ right: 32, transform: `translate3d(0, calc(-50% + ${heroY}px), 0)`, writingMode: "vertical-rl", zIndex: 4, opacity: heroOpacity }}
           >
             <span className="text-[10px] font-medium uppercase text-[#6B7280]" style={{ letterSpacing: "0.4em" }}>
               Vol. 12 — 2026
@@ -201,7 +193,7 @@ function Index() {
           {/* CTAs — abaixo do "R" de WEBCAR */}
           <div
             className="hero-ui hero-ui-4 absolute z-[5] flex flex-col items-center gap-3 will-change-transform md:items-end"
-            style={{ right: "3%", bottom: "8%", transform: `translate3d(0, ${ctasY}px, 0)`, opacity: heroOpacity }}
+            style={{ right: "3%", bottom: "8%", transform: `translate3d(0, ${heroY}px, 0)`, opacity: heroOpacity }}
           >
             <AcceleratorButton to="/estoque" label="Ver carros" />
             <a
@@ -218,7 +210,7 @@ function Index() {
         {/* ZONA BOTTOM — texto + CTAs + stats */}
         <div
           className="relative z-10 flex flex-col justify-end bg-white/0 px-6 will-change-transform md:px-16"
-          style={{ height: 56, transform: `translate3d(0, ${statsY}px, 0)`, opacity: heroOpacity }}
+          style={{ height: 56, transform: `translate3d(0, ${heroY}px, 0)`, opacity: heroOpacity }}
         >
           {/* Linha 2: stats bar */}
           <div className="hero-stats border-y border-[#E5E7EB] py-2.5">
