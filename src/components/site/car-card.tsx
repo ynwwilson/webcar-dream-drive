@@ -8,9 +8,9 @@ export function CarCard({ car }: { car: Car }) {
     <Link
       to="/veiculo/$id"
       params={{ id: car.id }}
-      className="group block cursor-pointer"
+      className="group block cursor-pointer overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-[var(--accent-blue)]/40"
     >
-      <div className="relative aspect-[16/9] overflow-hidden rounded-lg bg-[#FAFAFA]">
+      <div className="relative aspect-[16/9] overflow-hidden bg-[#FAFAFA]">
         <img
           src={car.image}
           alt={car.fullName}
@@ -18,7 +18,7 @@ export function CarCard({ car }: { car: Car }) {
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
         />
       </div>
-      <div className="pt-5">
+      <div className="p-5">
         <p className="text-[11px] font-medium uppercase tracking-[0.15em] text-[#6B7280]">
           {car.brand}
         </p>
