@@ -79,11 +79,11 @@ function Index() {
             style={{ transform: `translate3d(0, ${heroY}px, 0)`, opacity: heroOpacity }}
         >
           <div className="flex items-center gap-4">
-            <Link to="/" className="font-bold text-[#0A2540]" style={{ fontFamily: "Manrope, sans-serif", fontSize: 22, letterSpacing: "-0.02em" }}>
+            <Link to="/" className="font-display text-[#0A2540]" style={{ fontFamily: "var(--font-display)", fontSize: 24, letterSpacing: "-0.04em" }}>
               WEBCAR
             </Link>
             <span className="hidden h-px w-6 bg-[#0A2540] opacity-30 md:block" />
-            <p className="hidden text-[11px] font-medium uppercase text-[#6B7280] md:block" style={{ letterSpacing: "0.3em" }}>
+            <p className="eyebrow hidden text-[11px] text-[#6B7280] md:block">
               Est. 2014 · Patos de Minas/MG
             </p>
           </div>
@@ -127,12 +127,13 @@ function Index() {
               aria-hidden
               className="hero-webcar-text pointer-events-none select-none text-center"
               style={{
-                fontFamily: "Manrope, system-ui, sans-serif",
-                fontWeight: 800,
+                fontFamily: "var(--font-display)",
+                fontWeight: 900,
                 fontSize: "clamp(70px, 22vw, 380px)",
-                letterSpacing: "-0.05em",
+                letterSpacing: "-0.06em",
                 lineHeight: 0.9,
                 color: "#DDE3EC",
+                textTransform: "uppercase",
               }}
             >
               WEBCAR
@@ -146,11 +147,12 @@ function Index() {
             <h2
               className="hero-ui hero-ui-2 text-[#0A2540]"
               style={{
-                fontFamily: "Manrope, sans-serif",
+                fontFamily: "var(--font-display)",
                 fontWeight: 900,
-                fontSize: "clamp(26px, 2.9vw, 40px)",
-                letterSpacing: "-0.035em",
-                lineHeight: 1.02,
+                fontSize: "clamp(28px, 3.2vw, 46px)",
+                letterSpacing: "-0.045em",
+                lineHeight: 0.95,
+                textTransform: "uppercase",
               }}
             >
               WebCar — Seminovos premium.<br />
@@ -175,18 +177,18 @@ function Index() {
           />
           {/* Labels verticais — desktop only */}
           <div
-            className="hero-ui hero-ui-1 absolute top-1/2 hidden md:block"
+            className="eyebrow hero-ui hero-ui-1 absolute top-1/2 hidden md:block"
             style={{ left: 32, transform: `translate3d(0, calc(-50% + ${heroY}px), 0) rotate(180deg)`, writingMode: "vertical-rl", zIndex: 4, opacity: heroOpacity }}
           >
-            <span className="text-[10px] font-medium uppercase text-[#6B7280]" style={{ letterSpacing: "0.4em" }}>
+            <span className="text-[10px] text-[#6B7280]" style={{ letterSpacing: "0.4em" }}>
               Edição 01
             </span>
           </div>
           <div
-            className="hero-ui hero-ui-1 absolute top-1/2 hidden md:block"
+            className="eyebrow hero-ui hero-ui-1 absolute top-1/2 hidden md:block"
             style={{ right: 32, transform: `translate3d(0, calc(-50% + ${heroY}px), 0)`, writingMode: "vertical-rl", zIndex: 4, opacity: heroOpacity }}
           >
-            <span className="text-[10px] font-medium uppercase text-[#6B7280]" style={{ letterSpacing: "0.4em" }}>
+            <span className="text-[10px] text-[#6B7280]" style={{ letterSpacing: "0.4em" }}>
               Vol. 12 — 2026
             </span>
           </div>
@@ -214,13 +216,13 @@ function Index() {
         >
           {/* Linha 2: stats bar */}
           <div className="hero-stats border-y border-[#E5E7EB] py-2.5">
-            <div className="hidden flex-wrap items-center justify-around gap-x-6 gap-y-2 text-[11px] font-medium uppercase text-[#6B7280] md:flex" style={{ letterSpacing: "0.2em" }}>
+            <div className="font-condensed hidden flex-wrap items-center justify-around gap-x-6 gap-y-2 text-[14px] text-[#0A2540] md:flex" style={{ letterSpacing: "0.04em" }}>
               <span>1.000+ Entregas</span>
               <span>4.9 ★ Google</span>
               <span>100% Revisados</span>
               <span>12 Anos em Patos</span>
             </div>
-            <div className="grid grid-cols-2 gap-y-2 text-center text-[10px] font-medium uppercase text-[#6B7280] md:hidden" style={{ letterSpacing: "0.2em" }}>
+            <div className="font-condensed grid grid-cols-2 gap-y-2 text-center text-[12px] text-[#0A2540] md:hidden" style={{ letterSpacing: "0.04em" }}>
               <span>1.000+ Entregas</span>
               <span>4.9 ★ Google</span>
               <span>100% Revisados</span>
@@ -234,8 +236,8 @@ function Index() {
       <section className="bg-white px-4 py-24 md:px-8 md:py-32">
         <div className="mx-auto max-w-7xl">
           <div className="mb-14 max-w-2xl">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#6B7280]">Em destaque</p>
-            <h2 className="mt-3 text-3xl font-bold tracking-[-0.02em] text-[#0A0A0A] md:text-5xl">
+            <p className="eyebrow text-[12px] text-[#6B7280]">Em destaque</p>
+            <h2 className="mt-3 text-4xl text-[#0A0A0A] md:text-6xl">
               Selecionados pra você.
             </h2>
             <p className="mt-4 text-base text-[#6B7280] md:text-lg">
@@ -262,8 +264,8 @@ function Index() {
       <section className="bg-white px-4 py-24 md:px-8 md:py-32">
         <div className="mx-auto max-w-7xl">
           <div className="mb-16 max-w-2xl">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#6B7280]">Por que WebCar</p>
-            <h2 className="mt-3 text-3xl font-bold tracking-[-0.02em] text-[#0A0A0A] md:text-5xl">
+            <p className="eyebrow text-[12px] text-[#6B7280]">Por que WebCar</p>
+            <h2 className="mt-3 text-4xl text-[#0A0A0A] md:text-6xl">
               Comprar carro pode ser simples.
             </h2>
             <p className="mt-4 text-base text-[#6B7280] md:text-lg">
@@ -290,7 +292,7 @@ function Index() {
             ].map((item) => (
               <div key={item.title} className="px-6 py-10 md:px-12">
                 <div className="text-[#0A0A0A]">{item.icon}</div>
-                <h3 className="mt-8 text-xl font-bold text-[#0A0A0A]">{item.title}</h3>
+                <h3 className="mt-8 text-2xl text-[#0A0A0A]">{item.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-[#6B7280]">{item.desc}</p>
               </div>
             ))}
@@ -301,8 +303,8 @@ function Index() {
       {/* +1.000 CLIENTES — carrossel 3D côncavo */}
       <section className="bg-[#FAFAFA] py-24 md:py-32">
         <div className="mx-auto max-w-7xl px-4 text-center md:px-8">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#6B7280]">Quem já comprou conosco</p>
-          <h2 className="mt-3 text-3xl font-bold leading-[1.05] tracking-[-0.02em] text-[#0A0A0A] md:text-5xl">
+          <p className="eyebrow text-[12px] text-[#6B7280]">Quem já comprou conosco</p>
+          <h2 className="mt-3 text-4xl text-[#0A0A0A] md:text-6xl">
             Mais de 1.000 chaves entregues.
           </h2>
           <p className="mt-4 text-base text-[#6B7280] md:text-lg">
@@ -332,7 +334,7 @@ function Index() {
       {/* CTA FINAL */}
       <section className="bg-white px-4 py-24 md:px-8 md:py-32">
         <div className="mx-auto flex max-w-[720px] flex-col items-center gap-6 text-center">
-          <h2 className="text-3xl font-bold tracking-[-0.02em] text-[#0A0A0A] md:text-5xl">
+          <h2 className="text-4xl text-[#0A0A0A] md:text-6xl">
             Pronto pra encontrar seu próximo carro?
           </h2>
           <p className="text-base text-[#6B7280] md:text-lg">
