@@ -2,6 +2,7 @@
 @source "../src";
 @import "tw-animate-css";
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
 
 @custom-variant dark (&:is(.dark *));
 
@@ -69,30 +70,30 @@
 
 :root {
   --radius: 0.625rem;
-  /* DARK PREMIUM PALETTE */
-  --brand: oklch(1 0 0);                      /* white — used for headings */
-  --brand-foreground: oklch(0.04 0 0);
-  --accent-blue: oklch(0.62 0.18 255);        /* #2E7CF6 — only WhatsApp + hover */
+  /* LIGHT MINIMAL PALETTE */
+  --brand: oklch(0.04 0 0);                   /* near-black */
+  --brand-foreground: oklch(1 0 0);
+  --accent-blue: oklch(0.62 0.18 255);        /* #2E7CF6 — primary CTA */
   --whatsapp: oklch(0.72 0.17 145);
-  --background: oklch(0.04 0 0);              /* #0A0A0A */
-  --foreground: oklch(1 0 0);
-  --card: oklch(0.04 0 0);
-  --card-foreground: oklch(1 0 0);
-  --popover: oklch(0.08 0 0);
-  --popover-foreground: oklch(1 0 0);
-  --primary: oklch(1 0 0);
-  --primary-foreground: oklch(0.04 0 0);
-  --secondary: oklch(0 0 0);                  /* #000 — alt section bg */
-  --secondary-foreground: oklch(1 0 0);
-  --muted: oklch(0.08 0 0);
-  --muted-foreground: oklch(0.71 0 0);        /* #A0A0A0 */
-  --accent: oklch(0.08 0 0);
-  --accent-foreground: oklch(1 0 0);
+  --background: oklch(1 0 0);                 /* #FFFFFF */
+  --foreground: oklch(0.04 0 0);              /* #0A0A0A */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.04 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.04 0 0);
+  --primary: oklch(0.04 0 0);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.985 0 0);              /* #FAFAFA — subtle alt */
+  --secondary-foreground: oklch(0.04 0 0);
+  --muted: oklch(0.985 0 0);
+  --muted-foreground: oklch(0.5 0.02 265);    /* #6B7280 */
+  --accent: oklch(0.985 0 0);
+  --accent-foreground: oklch(0.04 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 0.1);               /* white 10% */
-  --input: oklch(1 0 0 / 0.1);
-  --ring: oklch(1 0 0 / 0.3);
+  --border: oklch(0.92 0 0);                  /* #E5E7EB hairline */
+  --input: oklch(0.92 0 0);
+  --ring: oklch(0.62 0.18 255 / 0.4);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
