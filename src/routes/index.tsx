@@ -168,7 +168,7 @@ function Index() {
         </div>
       </section>
 
-      {/* +1.000 CLIENTES — marquee infinito */}
+      {/* +1.000 CLIENTES — carrossel 3D côncavo */}
       <section className="bg-[#FAFAFA] py-24 md:py-32">
         <div className="mx-auto max-w-7xl px-4 text-center md:px-8">
           <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#6B7280]">Quem já comprou conosco</p>
@@ -179,18 +179,22 @@ function Index() {
             Cada cliente é um endereço novo em Patos.
           </p>
         </div>
-        <div className="relative mt-16 overflow-hidden">
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-[#FAFAFA] to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-[#FAFAFA] to-transparent" />
-          <div className="marquee-track flex w-max gap-6 md:gap-8">
-            {[...clientPhotos, ...clientPhotos].map((src, i) => (
-              <div
-                key={i}
-                className="h-[70px] w-[70px] shrink-0 overflow-hidden rounded-full border border-[#E5E7EB] bg-white md:h-[100px] md:w-[100px]"
-              >
-                <img src={src} alt="" loading="lazy" className="h-full w-full object-cover" />
-              </div>
-            ))}
+        <div className="carousel3d-stage mt-16">
+          <div className="carousel3d-scene">
+            <div className="carousel3d-rotor">
+              {clientPhotos.slice(0, 14).map((src, i, arr) => {
+                const angle = (360 / arr.length) * i;
+                return (
+                  <div
+                    key={i}
+                    className="carousel3d-card"
+                    style={{ transform: `rotateY(${angle}deg) translateZ(700px)` }}
+                  >
+                    <img src={src} alt="" loading="lazy" />
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
