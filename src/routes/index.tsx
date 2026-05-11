@@ -43,20 +43,17 @@ function Index() {
           alt="Porsche premium"
           className="absolute inset-0 h-full w-full object-cover"
         />
-        {/* overlay branco gradiente — clareia a foto e dá respiro ao texto */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/30 to-white/90" />
-
         <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 pb-16 pt-24 text-center md:justify-end md:pb-32">
-          <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.25em] text-[#6B7280]">
+          <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.25em] text-white/70">
             Revenda selecionada · Patos de Minas/MG
           </p>
           <h1
-            className="font-bold leading-[0.95] tracking-[-0.03em] text-[#0A0A0A]"
+            className="font-bold leading-[0.95] tracking-[-0.03em] text-white"
             style={{ fontSize: "clamp(40px, 8vw, 88px)" }}
           >
-            O carro certo.<br />Sem dor de cabeça.
+            O carro certo.<br /><span className="text-[#2E7CF6]">Sem dor de cabeça.</span>
           </h1>
-          <p className="mt-6 max-w-lg text-base text-[#6B7280] md:text-lg">
+          <p className="mt-6 max-w-lg text-base text-white/80 md:text-lg">
             Há 12 anos, mais de 1.000 famílias confiaram na WebCar.
           </p>
           <div className="mt-10 flex w-full max-w-sm flex-col items-stretch gap-3 sm:w-auto sm:flex-row">
@@ -70,7 +67,7 @@ function Index() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-[#0A0A0A] bg-transparent px-8 py-4 text-sm font-semibold text-[#0A0A0A] transition-all duration-200 hover:bg-[#0A0A0A] hover:text-white"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-white bg-transparent px-8 py-4 text-sm font-semibold text-white transition-all duration-200 hover:bg-white hover:text-[#0A0A0A]"
             >
               <WhatsAppIcon className="h-4 w-4" />
               Falar no WhatsApp
@@ -78,7 +75,7 @@ function Index() {
           </div>
         </div>
 
-        <div className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 text-[#0A0A0A]/40">
+        <div className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 text-white/50">
           <ChevronDown className="scroll-hint h-5 w-5" strokeWidth={1.5} />
         </div>
       </section>
