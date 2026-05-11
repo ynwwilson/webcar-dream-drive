@@ -1,4 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import { Menu } from "lucide-react";
 import { SiteHeader } from "@/components/site/header";
 import { SiteFooter } from "@/components/site/footer";
 import { CarCard } from "@/components/site/car-card";
@@ -27,12 +29,26 @@ const clientPhotos = Array.from({ length: 20 }).map(
 
 function Index() {
   const featured = cars.slice(0, 6);
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > window.innerHeight * 0.8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const navLinks = [
+    { to: "/estoque", label: "Estoque" },
+    { to: "/financiamento", label: "Financiamento" },
+    { to: "/sobre", label: "Sobre" },
+    { to: "/contato", label: "Contato" },
+  ] as const;
 
   return (
     <div className="min-h-screen bg-white text-[#0A0A0A]">
-      <SiteHeader transparentOnTop />
+      {scrolled && <SiteHeader transparentOnTop={false} />}
 
-      {/* HERO — WEBCAR atrás + Porsche por cima */}
+      {/* HERO — Magazine Spread editorial layout */}
       <section className="hero-webcar relative h-[100svh] w-full overflow-hidden">
         {/* Camada 1 — fundo */}
         <div
@@ -61,38 +77,149 @@ function Index() {
           className="hero-porsche-img absolute inset-0 h-full w-full"
           style={{ zIndex: 3, objectFit: "contain", objectPosition: "center" }}
         />
-        {/* Camada 4 — UI inferior */}
-        <div
-          className="absolute bottom-12 left-1/2 w-full max-w-3xl -translate-x-1/2 px-6 text-center md:bottom-20"
-          style={{ zIndex: 4 }}
-        >
-          <p className="hero-ui hero-ui-1 text-[12px] font-medium uppercase text-[#6B7280]" style={{ letterSpacing: "0.3em" }}>
-            Revenda premium · Patos de Minas/MG
-          </p>
-          <h2
-            className="hero-ui hero-ui-2 mt-4 font-bold text-[#0A2540]"
-            style={{ fontFamily: "Manrope, system-ui, sans-serif", fontSize: "clamp(24px, 4vw, 44px)", letterSpacing: "-0.02em", lineHeight: 1.05 }}
+
+        {/* Camada 4 — UI EDITORIAL */}
+        <div className="pointer-events-none absolute inset-0" style={{ zIndex: 4 }}>
+          {/* TOP LEFT — identidade */}
+          <div className="hero-ui hero-ui-1 pointer-events-auto absolute left-6 top-6 md:left-10 md:top-10">
+            <Link to="/" className="block font-bold text-[#0A2540]" style={{ fontFamily: "Manrope, sans-serif", fontSize: 22, letterSpacing: "-0.02em" }}>
+              WEBCAR
+            </Link>
+            <div className="mt-3 h-px w-8 bg-[#0A2540] opacity-30" />
+            <p className="mt-3 text-[11px] font-medium uppercase text-[#6B7280]" style={{ letterSpacing: "0.3em" }}>
+              Est. 2014 · Patos de Minas/MG
+            </p>
+          </div>
+
+          {/* TOP CENTER — menu (desktop) */}
+          <nav className="hero-ui hero-ui-1 pointer-events-auto absolute left-1/2 top-10 hidden -translate-x-1/2 items-center gap-3 md:flex">
+            {navLinks.map((l, i) => (
+              <span key={l.to} className="flex items-center gap-3">
+                <Link to={l.to as any} className="text-sm font-medium text-[#0A2540] transition-opacity hover:opacity-70">
+                  {l.label}
+                </Link>
+                {i < navLinks.length - 1 && <span className="text-[#C5CDD8]">·</span>}
+              </span>
+            ))}
+          </nav>
+
+          {/* TOP RIGHT — WhatsApp pill (desktop) / Menu (mobile) */}
+          <div className="hero-ui hero-ui-1 pointer-events-auto absolute right-6 top-6 md:right-10 md:top-10">
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="hidden items-center gap-2 rounded-full bg-[#2E7CF6] px-5 py-2.5 text-sm font-semibold text-white transition-all hover:brightness-110 md:inline-flex"
+            >
+              <WhatsAppIcon className="h-4 w-4" />
+              WhatsApp
+            </a>
+            <button className="inline-flex h-10 w-10 items-center justify-center rounded-md text-[#0A2540] md:hidden" aria-label="Menu">
+              <Menu className="h-5 w-5" />
+            </button>
+          </div>
+
+          {/* MID LEFT VERTICAL — desktop only */}
+          <div
+            className="hero-ui hero-ui-1 absolute left-10 top-1/2 hidden -translate-y-1/2 md:block"
+            style={{ writingMode: "vertical-rl", transform: "translateY(-50%) rotate(180deg)" }}
           >
-            O carro certo. Sem dor de cabeça.
-          </h2>
-          <p className="hero-ui hero-ui-3 mt-3 text-base text-[#6B7280] md:text-lg">
-            Seminovos selecionados. Patos de Minas/MG.
-          </p>
-          <div className="hero-ui hero-ui-4 mt-8 flex flex-col items-center justify-center gap-3 md:flex-row md:gap-4">
+            <span className="text-[10px] font-medium uppercase text-[#6B7280]" style={{ letterSpacing: "0.4em" }}>
+              Edição 01
+            </span>
+          </div>
+
+          {/* MID RIGHT VERTICAL — desktop only */}
+          <div
+            className="hero-ui hero-ui-1 absolute right-10 top-1/2 hidden -translate-y-1/2 md:block"
+            style={{ writingMode: "vertical-rl" }}
+          >
+            <span className="text-[10px] font-medium uppercase text-[#6B7280]" style={{ letterSpacing: "0.4em" }}>
+              Vol. 12 — 2026
+            </span>
+          </div>
+
+          {/* BOTTOM LEFT — headline + sub (desktop) */}
+          <div className="hero-ui hero-ui-2 pointer-events-auto absolute hidden md:block" style={{ left: 40, bottom: 140, maxWidth: 480 }}>
+            <h2
+              className="text-[#0A2540]"
+              style={{ fontFamily: "Manrope, sans-serif", fontWeight: 700, fontSize: "clamp(32px, 4.5vw, 56px)", letterSpacing: "-0.03em", lineHeight: 1.05 }}
+            >
+              <span className="block text-left">Em Patos, há um padrão.</span>
+              <span className="block text-right">
+                <span className="mr-2 inline-block h-px w-10 align-middle bg-[#0A2540]" />
+                WebCar.
+              </span>
+            </h2>
+            <p className="hero-ui hero-ui-3 mt-6 text-base text-[#6B7280]" style={{ maxWidth: 360 }}>
+              Há 12 anos selecionando carros pra quem mora aqui.<br />
+              Mais de 1.000 chaves entregues.
+            </p>
+          </div>
+
+          {/* BOTTOM RIGHT — CTAs (desktop) */}
+          <div className="hero-ui hero-ui-4 pointer-events-auto absolute hidden flex-col items-end gap-4 md:flex" style={{ right: 40, bottom: 140 }}>
             <Link
               to="/estoque"
-              className="inline-flex w-full max-w-[320px] items-center justify-center rounded-full bg-[#2E7CF6] px-8 py-4 text-sm font-semibold text-white transition-colors hover:bg-[#1E5FCC] md:w-auto"
+              className="inline-flex items-center justify-center rounded-full bg-[#2E7CF6] px-8 py-4 text-base font-semibold text-white transition-colors hover:bg-[#1E5FCC]"
             >
-              Ver estoque
+              Ver estoque →
             </Link>
             <a
               href={WHATSAPP_URL}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex w-full max-w-[320px] items-center justify-center rounded-full border border-[#0A2540] bg-transparent px-8 py-4 text-sm font-semibold text-[#0A2540] transition-colors hover:bg-[#0A2540] hover:text-white md:w-auto"
+              className="text-sm font-semibold text-[#0A2540] underline underline-offset-4 hover:opacity-70"
             >
-              Falar no WhatsApp
+              Falar no WhatsApp →
             </a>
+          </div>
+
+          {/* MOBILE — headline + CTAs centralizados */}
+          <div className="pointer-events-auto absolute left-1/2 -translate-x-1/2 px-6 text-center md:hidden" style={{ bottom: 120, width: "100%", maxWidth: 380 }}>
+            <h2 className="hero-ui hero-ui-2 text-[#0A2540]" style={{ fontFamily: "Manrope, sans-serif", fontWeight: 700, fontSize: 28, letterSpacing: "-0.03em", lineHeight: 1.1 }}>
+              Em Patos, há um padrão. — WebCar.
+            </h2>
+            <p className="hero-ui hero-ui-3 mt-3 text-sm text-[#6B7280]">
+              Há 12 anos selecionando carros pra quem mora aqui.
+            </p>
+            <div className="hero-ui hero-ui-4 mt-6 flex flex-col items-center gap-3">
+              <Link
+                to="/estoque"
+                className="inline-flex w-full max-w-[320px] items-center justify-center rounded-full bg-[#2E7CF6] px-8 py-4 text-sm font-semibold text-white"
+              >
+                Ver estoque →
+              </Link>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="text-sm font-semibold text-[#0A2540] underline underline-offset-4"
+              >
+                Falar no WhatsApp →
+              </a>
+            </div>
+          </div>
+
+          {/* BOTTOM BAR — STATS */}
+          <div className="hero-ui hero-stats pointer-events-auto absolute left-1/2 -translate-x-1/2" style={{ bottom: 24, width: "90%", maxWidth: 1200 }}>
+            <div className="border-y border-[#E5E7EB] py-4">
+              <div className="hidden items-center justify-center gap-6 text-[11px] font-medium uppercase text-[#6B7280] md:flex" style={{ letterSpacing: "0.2em" }}>
+                <span>1.000+ Entregas</span>
+                <span className="h-3 w-px bg-[#E5E7EB]" />
+                <span>4.9★ Google</span>
+                <span className="h-3 w-px bg-[#E5E7EB]" />
+                <span>100% Revisados</span>
+                <span className="h-3 w-px bg-[#E5E7EB]" />
+                <span>12 Anos em Patos</span>
+              </div>
+              <div className="grid grid-cols-2 gap-2 text-center text-[10px] font-medium uppercase text-[#6B7280] md:hidden" style={{ letterSpacing: "0.2em" }}>
+                <span>1.000+ Entregas</span>
+                <span>4.9★ Google</span>
+                <span>100% Revisados</span>
+                <span>12 Anos em Patos</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
