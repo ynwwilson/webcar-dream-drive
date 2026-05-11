@@ -19,7 +19,7 @@ import cliente9 from "@/assets/cliente-9.png";
 import cliente10 from "@/assets/cliente-10.png";
 import cliente11 from "@/assets/cliente-11.png";
 import cliente12 from "@/assets/cliente-12.png";
-import webcarLogo from "@/assets/webcar-logo.png";
+import webcarLogo from "@/assets/webcar-logo-color.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -313,7 +313,7 @@ function Index() {
           <img
             src={webcarLogo}
             alt="WebCar"
-            className="mx-auto mb-6 h-12 w-auto opacity-70 md:h-14"
+            className="mx-auto mb-8 h-20 w-auto md:h-28"
           />
           <p className="eyebrow text-[12px] text-[#6B7280]">Quem já comprou conosco</p>
           <h2 className="mt-3 text-4xl text-[#0A0A0A] md:text-6xl">
