@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { WhatsAppIcon, WHATSAPP_URL } from "./whatsapp-icon";
+import logo from "@/assets/webcar-logo.png";
 
 const links = [
   { to: "/estoque", label: "Estoque" },
@@ -28,8 +29,8 @@ export function SiteHeader() {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:px-8">
-        <Link to="/" className="text-xl font-extrabold tracking-tight text-brand">
-          WEBCAR
+        <Link to="/" aria-label="WebCar" className="flex items-center">
+          <img src={logo} alt="WebCar" className="h-9 w-auto md:h-10" />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
