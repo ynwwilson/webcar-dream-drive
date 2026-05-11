@@ -50,7 +50,10 @@ function Index() {
       {scrolled && <SiteHeader transparentOnTop={false} />}
 
       {/* HERO — 3 zonas verticais (TOP / MID / BOTTOM) */}
-      <section className="hero-webcar relative flex h-[100vh] w-full flex-col overflow-hidden bg-white">
+      <section
+        className="hero-webcar relative flex h-[100vh] w-full flex-col overflow-hidden"
+        style={{ background: "linear-gradient(180deg, #FFFFFF 0%, #EEF1F5 100%)" }}
+      >
         {/* ZONA TOP — header */}
         <header className="hero-ui hero-ui-1 relative z-10 flex h-20 items-center justify-between px-5 md:px-8">
           <div className="flex items-center gap-4">
