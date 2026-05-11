@@ -110,13 +110,13 @@ function Index() {
             </span>
           </div>
           {/* Headline sobre o W do WEBCAR */}
-          <div className="absolute left-6 top-5 z-[4] max-w-[540px] text-left md:left-16 md:top-8 lg:top-10">
+          <div className="absolute left-6 top-5 z-[4] max-w-[calc(100%-48px)] text-left md:left-16 md:top-8 md:max-w-[700px] lg:top-10">
             <h2
               className="hero-ui hero-ui-2 text-[#0A2540]"
               style={{
                 fontFamily: "Manrope, sans-serif",
                 fontWeight: 700,
-                fontSize: "clamp(28px, 3.55vw, 48px)",
+                fontSize: "clamp(28px, 3.4vw, 46px)",
                 letterSpacing: "-0.03em",
                 lineHeight: 1.04,
               }}
