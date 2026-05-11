@@ -294,7 +294,7 @@ function Index() {
       </section>
 
       {/* +1.000 CLIENTES — carrossel 3D côncavo */}
-      <section className="bg-[#FAFAFA] py-24 md:py-32">
+      <section className="bg-[#FAFAFA] py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 text-center md:px-8">
           <p className="eyebrow text-[12px] text-[#6B7280]">Quem já comprou conosco</p>
           <h2 className="mt-3 text-4xl text-[#0A0A0A] md:text-6xl">
@@ -304,7 +304,7 @@ function Index() {
             Cada cliente é um endereço novo em Patos.
           </p>
         </div>
-        <div className="carousel3d-stage mt-16">
+        <div className="carousel3d-stage mt-10">
           <div className="carousel3d-scene">
             <div className="carousel3d-rotor">
               {clientBanners.map((src, i, arr) => {
