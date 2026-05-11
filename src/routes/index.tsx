@@ -185,7 +185,7 @@ function Index() {
                   <div
                     key={i}
                     className="carousel3d-card"
-                    style={{ transform: `rotateY(${angle}deg) translateZ(700px)` }}
+                    style={{ transform: `rotateY(${angle}deg) translateZ(700px) rotateY(180deg)` }}
                   >
                     <img src={src} alt="" loading="lazy" />
                   </div>

@@ -174,9 +174,9 @@
 /* ===== 3D Concave Carousel (clientes) ===== */
 .carousel3d-stage {
   perspective: 1000px;
-  height: 540px;
+  height: 560px;
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
 }
 .carousel3d-scene {
   width: 320px;
