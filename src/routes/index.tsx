@@ -55,7 +55,8 @@ function Index() {
   const vh = typeof window !== "undefined" ? window.innerHeight : 900;
   const p = Math.min(scrollY, vh) / vh; // 0 → 1
   // Tudo sobe junto, em velocidades diferentes (parallax forte)
-  const porscheY = p * -700;
+  // Carro usa vh-based para ficar estável em diferentes telas
+  const porscheY = p * vh * -0.55;
   const webcarY = p * -520;
   const headlineY = p * -900;
   const ctasY = p * -780;
@@ -177,7 +178,8 @@ function Index() {
               zIndex: 3,
               objectFit: "contain",
               objectPosition: "60% 62%",
-              transform: `translate3d(0, ${porscheY}px, 0) scale(${1 + p * 0.15})`,
+              transform: `translate3d(0, ${porscheY}px, 0) scale(${1 + p * 0.06})`,
+              transformOrigin: "60% 62%",
             }}
           />
           {/* Labels verticais — desktop only */}
