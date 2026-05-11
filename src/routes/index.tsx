@@ -225,7 +225,3 @@ function Index() {
     </div>
   );
 }
-
-function Index() {
-  return <PlaceholderIndex />;
-}
