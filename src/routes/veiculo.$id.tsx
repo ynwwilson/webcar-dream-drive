@@ -44,7 +44,8 @@ export const Route = createFileRoute("/veiculo/$id")({
 });
 
 function VeiculoPage() {
-  const { car } = Route.useLoaderData();
+  const params = Route.useParams();
+  const car = cars.find((c) => c.id === params.id)!;
   const gallery = car.gallery.length > 0 ? car.gallery : [car.image];
   const [active, setActive] = useState(0);
 
