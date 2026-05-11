@@ -84,8 +84,8 @@ function Index() {
           className="hero-ui hero-ui-1 relative z-10 flex h-20 items-center justify-between px-5 will-change-transform md:px-8"
         >
           <div className="flex items-center gap-4">
-            <Link to="/" className="font-display text-[#0A2540]" style={{ fontFamily: "var(--font-display)", fontSize: 24, letterSpacing: "-0.04em" }}>
-              WEBCAR
+            <Link to="/" className="flex items-center">
+              <img src={webcarLogo} alt="WebCar" className="h-9 w-auto md:h-10" />
             </Link>
             <span className="hidden h-px w-6 bg-[#0A2540] opacity-30 md:block" />
             <p className="eyebrow hidden text-[11px] text-[#6B7280] md:block">
