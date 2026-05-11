@@ -31,12 +31,34 @@ const clientPhotos = Array.from({ length: 20 }).map(
 function Index() {
   const featured = cars.slice(0, 6);
   const [scrolled, setScrolled] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > window.innerHeight * 0.8);
+    let raf = 0;
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        const y = window.scrollY;
+        setScrollY(y);
+        setScrolled(y > window.innerHeight * 0.8);
+        raf = 0;
+      });
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
   }, []);
+
+  // Parallax — strong, clamped to viewport
+  const vh = typeof window !== "undefined" ? window.innerHeight : 900;
+  const p = Math.min(scrollY, vh) / vh; // 0 → 1
+  const porscheY = p * 220;       // moves down faster
+  const webcarY = p * -180;       // moves up
+  const headlineY = p * -120;     // moves up
+  const ctasY = p * 140;          // moves down
+  const heroOpacity = 1 - p * 0.55;
 
   const navLinks = [
     { to: "/estoque", label: "Estoque" },
