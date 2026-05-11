@@ -121,8 +121,8 @@ function Index() {
                 lineHeight: 1.04,
               }}
             >
-              Em Patos, há um padrão.<br />
-              <span className="inline-block md:pl-12">— WebCar.</span>
+              WebCar — Seminovos premium.<br />
+              <span className="inline-block md:pl-12">Desde 2014 transformando vidas!</span>
             </h2>
             <p className="hero-ui hero-ui-3 mt-3 max-w-[460px] text-[15px] leading-relaxed text-[#6B7280] md:mt-4">
               Há 12 anos selecionando carros pra quem mora aqui. +1.000 chaves entregues.
