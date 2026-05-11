@@ -5,6 +5,7 @@ import { SiteFooter } from "@/components/site/footer";
 import { CarCard } from "@/components/site/car-card";
 import { WhatsAppIcon, WHATSAPP_URL } from "@/components/site/whatsapp-icon";
 import { cars } from "@/data/cars";
+import heroImg from "@/assets/hero-porsche.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -22,8 +23,7 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const HERO_IMG =
-  "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2400&q=85";
+const HERO_IMG = heroImg;
 
 const clientPhotos = Array.from({ length: 20 }).map(
   (_, i) => `https://i.pravatar.cc/240?img=${(i % 70) + 1}`,
@@ -43,8 +43,8 @@ function Index() {
           alt="Porsche premium"
           className="absolute inset-0 h-full w-full object-cover"
         />
-        {/* white overlay para deixar a foto clara e dar respiro ao texto */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-white/10 to-white/70" />
+        {/* overlay branco gradiente — clareia a foto e dá respiro ao texto */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/30 to-white/90" />
 
         <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 pb-16 pt-24 text-center md:justify-end md:pb-32">
           <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.25em] text-[#6B7280]">
