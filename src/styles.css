@@ -223,7 +223,7 @@ html, body { overflow-x: hidden; }
   transform-style: preserve-3d;
   animation: carousel3d-spin 40s linear infinite;
 }
-.carousel3d-rotor:hover { animation-play-state: paused; }
+.carousel3d-rotor { pointer-events: none; }
 .carousel3d-card {
   position: absolute;
   width: 560px;
