@@ -17,6 +17,8 @@ import cliente7 from "@/assets/cliente-7.png";
 import cliente8 from "@/assets/cliente-8.png";
 import cliente9 from "@/assets/cliente-9.png";
 import cliente10 from "@/assets/cliente-10.png";
+import cliente11 from "@/assets/cliente-11.png";
+import cliente12 from "@/assets/cliente-12.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -34,8 +36,8 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const clientPhotos = [cliente1, cliente2, cliente3, cliente4, cliente5, cliente6, cliente7, cliente8, cliente9, cliente10];
-const clientBanners = Array.from({ length: 10 }).map(
+const clientPhotos = [cliente1, cliente2, cliente3, cliente4, cliente5, cliente6, cliente7, cliente8, cliente9, cliente10, cliente11, cliente12];
+const clientBanners = Array.from({ length: 12 }).map(
   (_, i) => clientPhotos[i % clientPhotos.length],
 );
 
