@@ -4,7 +4,7 @@ import logo from "@/assets/webcar-logo.png";
 
 export function SiteFooter() {
   return (
-    <footer className="bg-brand text-white">
+    <footer className="border-t border-white/10 bg-black text-white">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 py-14 md:grid-cols-4 md:px-8">
         <div>
           <img src={logo} alt="WebCar" className="h-10 w-auto brightness-0 invert" />

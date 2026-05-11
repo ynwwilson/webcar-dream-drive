@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { Gauge, Fuel, Settings2 } from "lucide-react";
 import type { Car } from "@/data/cars";
 import { formatBRL, formatKM } from "@/data/cars";
 
@@ -7,30 +8,32 @@ export function CarCard({ car }: { car: Car }) {
     <Link
       to="/veiculo/$id"
       params={{ id: car.id }}
-      className="group block overflow-hidden rounded-2xl border bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_-20px_rgba(10,37,64,0.25)]"
+      className="group block cursor-pointer overflow-hidden rounded-2xl border border-white/10 bg-[#0A0A0A] transition-all duration-300 hover:border-white/30"
     >
-      <div className="relative aspect-video overflow-hidden bg-muted">
+      <div className="relative aspect-[4/3] overflow-hidden bg-black">
         <img
           src={car.image}
           alt={car.fullName}
           loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
       </div>
-      <div className="p-5">
-        <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
+      <div className="p-6">
+        <p className="text-[11px] font-medium uppercase tracking-[0.15em] text-white/50">
           {car.brand}
         </p>
-        <h3 className="mt-1 text-lg font-bold text-brand">{car.model}</h3>
-        <p className="mt-1 text-sm text-muted-foreground">
-          {car.year} · {formatKM(car.km)}
-        </p>
-        <div className="mt-4 flex items-end justify-between gap-3">
-          <p className="text-xl font-extrabold text-brand">{formatBRL(car.price)}</p>
-          <span className="text-sm font-semibold text-accent-blue group-hover:underline">
-            Ver detalhes →
-          </span>
+        <h3 className="mt-1.5 text-xl font-semibold tracking-tight text-white">{car.model}</h3>
+        <p className="mt-1 text-sm text-white/50">{car.year}</p>
+
+        <div className="my-5 h-px w-full bg-white/10" />
+
+        <div className="flex items-center gap-4 text-[12px] text-white/60">
+          <span className="inline-flex items-center gap-1.5"><Gauge className="h-3.5 w-3.5" strokeWidth={1.5} />{formatKM(car.km)}</span>
+          <span className="inline-flex items-center gap-1.5"><Fuel className="h-3.5 w-3.5" strokeWidth={1.5} />{car.fuel}</span>
+          <span className="inline-flex items-center gap-1.5"><Settings2 className="h-3.5 w-3.5" strokeWidth={1.5} />{car.transmission === "Automático" ? "Aut." : "Man."}</span>
         </div>
+
+        <p className="mt-6 text-2xl font-semibold tracking-tight text-white">{formatBRL(car.price)}</p>
       </div>
     </Link>
   );
