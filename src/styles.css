@@ -201,7 +201,7 @@
   perspective: 1000px;
   height: 460px;
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -229,7 +229,7 @@
   background-color: #fff;
   border-radius: 32px;
   overflow: hidden;
-  box-shadow: 0 25px 50px rgba(0,0,0,0.15), 0 5px 15px rgba(0,0,0,0.1);
+  box-shadow: none;
   transform-origin: center;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
