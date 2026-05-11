@@ -1,13 +1,13 @@
 import { Link } from "@tanstack/react-router";
 import { Instagram, Facebook, Youtube, MapPin } from "lucide-react";
-import logo from "@/assets/webcar-logo.png";
+import logo from "@/assets/webcar-logo-color.png";
 
 export function SiteFooter() {
   return (
     <footer className="border-t border-[#E5E7EB] bg-white text-[#0A0A0A]">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 py-14 md:grid-cols-4 md:px-8">
         <div>
-          <img src={logo} alt="WebCar" className="h-10 w-auto brightness-0" />
+          <img src={logo} alt="WebCar" className="h-10 w-auto" />
           <p className="mt-4 max-w-xs text-sm text-[#6B7280]">
             Seminovos selecionados em Patos de Minas. Procedência, garantia e atendimento de verdade.
           </p>
