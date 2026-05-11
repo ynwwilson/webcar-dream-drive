@@ -110,13 +110,13 @@ function Index() {
             </span>
           </div>
           {/* Headline sobre o W do WEBCAR */}
-          <div className="absolute left-6 top-6 z-[4] max-w-[620px] text-left md:left-16 md:top-10 lg:top-12">
+          <div className="absolute left-6 top-5 z-[4] max-w-[540px] text-left md:left-16 md:top-8 lg:top-10">
             <h2
               className="hero-ui hero-ui-2 text-[#0A2540]"
               style={{
                 fontFamily: "Manrope, sans-serif",
                 fontWeight: 700,
-                fontSize: "clamp(32px, 4.2vw, 56px)",
+                fontSize: "clamp(28px, 3.55vw, 48px)",
                 letterSpacing: "-0.03em",
                 lineHeight: 1.04,
               }}
@@ -124,7 +124,7 @@ function Index() {
               Em Patos, há um padrão.<br />
               <span className="inline-block md:pl-12">— WebCar.</span>
             </h2>
-            <p className="hero-ui hero-ui-3 mt-3 max-w-[500px] text-[15px] leading-relaxed text-[#6B7280] md:mt-4">
+            <p className="hero-ui hero-ui-3 mt-3 max-w-[460px] text-[15px] leading-relaxed text-[#6B7280] md:mt-4">
               Há 12 anos selecionando carros pra quem mora aqui. +1.000 chaves entregues.
             </p>
           </div>
@@ -133,7 +133,7 @@ function Index() {
             src="/porsche.png"
             alt=""
             className="hero-porsche-img absolute inset-0 h-full w-full"
-            style={{ zIndex: 3, objectFit: "contain", objectPosition: "center" }}
+            style={{ zIndex: 3, objectFit: "contain", objectPosition: "60% 62%" }}
           />
           {/* Labels verticais — desktop only */}
           <div
