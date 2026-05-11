@@ -135,7 +135,7 @@ function Index() {
             className="absolute left-6 top-5 z-[4] max-w-[calc(100%-48px)] text-left will-change-transform md:left-16 md:top-8 md:max-w-[700px] lg:top-10"
           >
             <h2
-              className="hero-ui hero-ui-2 text-[#0A2540]"
+              className="hero-ui hero-ui-2"
               style={{
                 fontFamily: "var(--font-display)",
                 fontWeight: 900,
@@ -143,6 +143,11 @@ function Index() {
                 letterSpacing: "-0.045em",
                 lineHeight: 0.95,
                 textTransform: "uppercase",
+                backgroundImage: "linear-gradient(180deg, #4A7BC8 0%, #2E5BA8 55%, #1E3A6B 100%)",
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                color: "transparent",
               }}
             >
               WebCar — Seminovos premium.<br />
