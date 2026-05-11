@@ -265,12 +265,12 @@
   to   { opacity: 1; letter-spacing: -0.05em; }
 }
 @keyframes hero-porsche-in {
-  from { opacity: 0; transform: translateX(40px); }
-  to   { opacity: 1; transform: translateX(0); }
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 @keyframes hero-ui-in {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 .hero-fade-bg { opacity: 0; animation: hero-bg-fade 400ms ease-out forwards; }
 .hero-webcar-text {
