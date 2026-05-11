@@ -25,9 +25,6 @@ export const Route = createFileRoute("/")({
 const HERO_IMG =
   "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2400&q=85";
 
-const HERO_VIDEO_PLACEHOLDER =
-  "https://cdn.coverr.co/videos/coverr-driving-a-sports-car-3186/1080p.mp4";
-
 const clientPhotos = Array.from({ length: 20 }).map(
   (_, i) => `https://i.pravatar.cc/240?img=${(i % 70) + 1}`,
 );
@@ -36,46 +33,36 @@ function Index() {
   const featured = cars.slice(0, 6);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-white text-[#0A0A0A]">
       <SiteHeader transparentOnTop />
 
-      {/* HERO — fullscreen cinematic */}
+      {/* HERO — light, persuasivo */}
       <section className="relative h-[100svh] w-full overflow-hidden">
         <img
           src={HERO_IMG}
-          alt="Porsche em destaque"
-          className="absolute inset-0 hidden h-full w-full object-cover md:block"
+          alt="Porsche premium"
+          className="absolute inset-0 h-full w-full object-cover"
         />
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster={HERO_IMG}
-          className="absolute inset-0 h-full w-full object-cover md:hidden"
-        >
-          <source src={HERO_VIDEO_PLACEHOLDER} type="video/mp4" />
-        </video>
+        {/* white overlay para deixar a foto clara e dar respiro ao texto */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-white/10 to-white/70" />
 
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black" />
-
-        <div className="relative z-10 flex h-full flex-col items-center justify-end px-6 pb-24 text-center md:pb-32">
-          <p className="mb-6 text-[11px] font-medium uppercase tracking-[0.25em] text-white/60">
-            Seminovos premium · Patos de Minas/MG
+        <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 pb-16 pt-24 text-center md:justify-end md:pb-32">
+          <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.25em] text-[#6B7280]">
+            Revenda selecionada · Patos de Minas/MG
           </p>
           <h1
-            className="font-bold leading-[0.95] tracking-[-0.03em] text-white"
-            style={{ fontSize: "clamp(48px, 8vw, 96px)" }}
+            className="font-bold leading-[0.95] tracking-[-0.03em] text-[#0A0A0A]"
+            style={{ fontSize: "clamp(40px, 8vw, 88px)" }}
           >
-            Seu próximo carro.
+            O carro certo.<br />Sem dor de cabeça.
           </h1>
-          <p className="mt-6 max-w-md text-base text-white/70 md:text-lg">
-            Selecionados a dedo. Entregues no padrão que você merece.
+          <p className="mt-6 max-w-lg text-base text-[#6B7280] md:text-lg">
+            Há 12 anos, mais de 1.000 famílias confiaram na WebCar.
           </p>
           <div className="mt-10 flex w-full max-w-sm flex-col items-stretch gap-3 sm:w-auto sm:flex-row">
             <Link
               to="/estoque"
-              className="inline-flex items-center justify-center rounded-full border border-white/80 bg-transparent px-8 py-3.5 text-sm font-medium text-white transition-all duration-300 hover:bg-white hover:text-black"
+              className="inline-flex items-center justify-center rounded-full bg-[#2E7CF6] px-8 py-4 text-sm font-semibold text-white transition-all duration-200 hover:bg-[#2566D1]"
             >
               Ver estoque
             </Link>
@@ -83,7 +70,7 @@ function Index() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/80 bg-transparent px-8 py-3.5 text-sm font-medium text-white transition-all duration-300 hover:bg-white hover:text-black"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-[#0A0A0A] bg-transparent px-8 py-4 text-sm font-semibold text-[#0A0A0A] transition-all duration-200 hover:bg-[#0A0A0A] hover:text-white"
             >
               <WhatsAppIcon className="h-4 w-4" />
               Falar no WhatsApp
@@ -91,75 +78,69 @@ function Index() {
           </div>
         </div>
 
-        <div className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 text-white/40">
+        <div className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 text-[#0A0A0A]/40">
           <ChevronDown className="scroll-hint h-5 w-5" strokeWidth={1.5} />
         </div>
       </section>
 
-      {/* DESTAQUES */}
-      <section className="bg-background px-4 py-24 md:px-8 md:py-32">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-14 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-            <div>
-              <p className="text-[11px] font-medium uppercase tracking-[0.25em] text-white/50">
-                Em destaque
-              </p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-[-0.02em] text-white md:text-5xl">
-                Destaques do estoque
-              </h2>
+      {/* PROVA EM NÚMEROS */}
+      <section className="border-y border-[#E5E7EB] bg-white px-4 py-16 md:px-8">
+        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 md:grid-cols-4 md:divide-x md:divide-[#E5E7EB] md:gap-0">
+          {[
+            { n: "1.000+", l: "clientes em Patos" },
+            { n: "12 anos", l: "no mercado" },
+            { n: "4.9 ★", l: "avaliação Google" },
+            { n: "100%", l: "carros revisados" },
+          ].map((s) => (
+            <div key={s.l} className="text-center md:px-6">
+              <p className="font-bold tracking-[-0.02em] text-[#0A0A0A]" style={{ fontSize: "clamp(36px, 5vw, 56px)" }}>{s.n}</p>
+              <p className="mt-2 text-[12px] font-medium uppercase tracking-[0.1em] text-[#6B7280]">{s.l}</p>
             </div>
-            <Link
-              to="/estoque"
-              className="text-sm text-white/60 underline-offset-4 transition-colors hover:text-white hover:underline"
-            >
-              Ver todos →
-            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* DESTAQUES */}
+      <section className="bg-white px-4 py-24 md:px-8 md:py-32">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-14 max-w-2xl">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#6B7280]">Em destaque</p>
+            <h2 className="mt-3 text-3xl font-bold tracking-[-0.02em] text-[#0A0A0A] md:text-5xl">
+              Selecionados pra você.
+            </h2>
+            <p className="mt-4 text-base text-[#6B7280] md:text-lg">
+              Carros revisados, com procedência e prontos pra rodar.
+            </p>
           </div>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
             {featured.map((c) => (
               <CarCard key={c.id} car={c} />
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* +1000 CLIENTES — true infinite marquee */}
-      <section className="bg-black py-24 md:py-32">
-        <div className="mx-auto max-w-7xl px-4 text-center md:px-8">
-          <h2 className="mx-auto text-3xl font-semibold leading-[1.05] tracking-[-0.02em] text-white md:text-5xl">
-            +1.000 clientes.
-            <br />
-            <span className="text-white/50">Uma história em cada chave entregue.</span>
-          </h2>
-        </div>
-        <div className="relative mt-16 overflow-hidden">
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-black to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-black to-transparent" />
-          <div className="marquee-track flex w-max gap-6 md:gap-8">
-            {[...clientPhotos, ...clientPhotos].map((src, i) => (
-              <div
-                key={i}
-                className="h-20 w-20 shrink-0 overflow-hidden rounded-full border border-white/10 md:h-[120px] md:w-[120px]"
-              >
-                <img src={src} alt="" loading="lazy" className="h-full w-full object-cover" />
-              </div>
-            ))}
+          <div className="mt-14 flex justify-center">
+            <Link
+              to="/estoque"
+              className="inline-flex items-center justify-center rounded-full border border-[#0A0A0A] bg-transparent px-8 py-3.5 text-sm font-semibold text-[#0A0A0A] transition-all duration-200 hover:bg-[#0A0A0A] hover:text-white"
+            >
+              Ver todo o estoque
+            </Link>
           </div>
         </div>
       </section>
 
       {/* POR QUE WEBCAR */}
-      <section className="bg-black px-4 py-24 md:px-8 md:py-32">
+      <section className="bg-white px-4 py-24 md:px-8 md:py-32">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-16 text-center">
-            <p className="text-[11px] font-medium uppercase tracking-[0.25em] text-white/50">
-              Por que WebCar
-            </p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-[-0.02em] text-white md:text-5xl">
-              Comprar bem é simples.
+          <div className="mb-16 max-w-2xl">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#6B7280]">Por que WebCar</p>
+            <h2 className="mt-3 text-3xl font-bold tracking-[-0.02em] text-[#0A0A0A] md:text-5xl">
+              Comprar carro pode ser simples.
             </h2>
+            <p className="mt-4 text-base text-[#6B7280] md:text-lg">
+              Você escolhe, a gente cuida do resto. Sem letras miúdas, sem surpresas.
+            </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 md:divide-x md:divide-white/10">
+          <div className="grid grid-cols-1 md:grid-cols-3 md:divide-x md:divide-[#E5E7EB]">
             {[
               {
                 icon: <CheckIcon />,
@@ -178,9 +159,36 @@ function Index() {
               },
             ].map((item) => (
               <div key={item.title} className="px-6 py-10 md:px-12">
-                <div className="text-white">{item.icon}</div>
-                <h3 className="mt-8 text-xl font-semibold text-white">{item.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-white/60">{item.desc}</p>
+                <div className="text-[#0A0A0A]">{item.icon}</div>
+                <h3 className="mt-8 text-xl font-bold text-[#0A0A0A]">{item.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-[#6B7280]">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* +1.000 CLIENTES — marquee infinito */}
+      <section className="bg-[#FAFAFA] py-24 md:py-32">
+        <div className="mx-auto max-w-7xl px-4 text-center md:px-8">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#6B7280]">Quem já comprou conosco</p>
+          <h2 className="mt-3 text-3xl font-bold leading-[1.05] tracking-[-0.02em] text-[#0A0A0A] md:text-5xl">
+            Mais de 1.000 chaves entregues.
+          </h2>
+          <p className="mt-4 text-base text-[#6B7280] md:text-lg">
+            Cada cliente é um endereço novo em Patos.
+          </p>
+        </div>
+        <div className="relative mt-16 overflow-hidden">
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-[#FAFAFA] to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-[#FAFAFA] to-transparent" />
+          <div className="marquee-track flex w-max gap-6 md:gap-8">
+            {[...clientPhotos, ...clientPhotos].map((src, i) => (
+              <div
+                key={i}
+                className="h-[70px] w-[70px] shrink-0 overflow-hidden rounded-full border border-[#E5E7EB] bg-white md:h-[100px] md:w-[100px]"
+              >
+                <img src={src} alt="" loading="lazy" className="h-full w-full object-cover" />
               </div>
             ))}
           </div>
@@ -188,24 +196,25 @@ function Index() {
       </section>
 
       {/* CTA FINAL */}
-      <section className="bg-background px-4 py-24 md:px-8 md:py-32">
-        <div className="mx-auto flex max-w-3xl flex-col items-center gap-8 text-center">
-          <h2 className="text-3xl font-semibold tracking-[-0.02em] text-white md:text-5xl">
-            Não achou o que procura?
-            <br />
-            <span className="text-white/50">Fale com a gente.</span>
+      <section className="bg-white px-4 py-24 md:px-8 md:py-32">
+        <div className="mx-auto flex max-w-[720px] flex-col items-center gap-6 text-center">
+          <h2 className="text-3xl font-bold tracking-[-0.02em] text-[#0A0A0A] md:text-5xl">
+            Pronto pra encontrar seu próximo carro?
           </h2>
+          <p className="text-base text-[#6B7280] md:text-lg">
+            Resposta em minutos. Atendimento humano. Sem enrolação.
+          </p>
           <a
             href={WHATSAPP_URL}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-3 rounded-full border border-white/80 bg-transparent px-10 py-4 text-base font-medium text-white transition-all duration-300 hover:bg-white hover:text-black"
+            className="mt-2 inline-flex items-center gap-3 rounded-full bg-[#2E7CF6] px-10 py-4 text-base font-semibold text-white transition-all duration-200 hover:bg-[#2566D1]"
           >
             <WhatsAppIcon className="h-5 w-5" />
             Falar no WhatsApp
           </a>
-          <p className="text-xs text-white/40">
-            Resposta em minutos · Atendimento humano · Patos de Minas/MG
+          <p className="text-xs text-[#6B7280]">
+            Atendimento de seg a sáb · WhatsApp · Patos de Minas/MG
           </p>
         </div>
       </section>
