@@ -10,7 +10,7 @@ export function CarCard({ car }: { car: Car }) {
       params={{ id: car.id }}
       className="group block cursor-pointer overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-[var(--accent-blue)]/40"
     >
-      <div className="relative aspect-[16/9] overflow-hidden bg-[#FAFAFA]">
+      <div className="relative aspect-[4/3] overflow-hidden bg-[#FAFAFA]">
         <img
           src={car.image}
           alt={car.fullName}
