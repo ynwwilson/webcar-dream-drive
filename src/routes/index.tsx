@@ -119,7 +119,10 @@ function Index() {
             style={{ zIndex: 1, background: "linear-gradient(180deg, #FFFFFF 0%, #EEF1F5 100%)" }}
           />
           {/* WEBCAR */}
-          <div className="absolute inset-0 flex items-center justify-center" style={{ zIndex: 2 }}>
+          <div
+            className="absolute inset-0 flex items-center justify-center will-change-transform"
+            style={{ zIndex: 2, transform: `translate3d(0, ${webcarY}px, 0)`, opacity: heroOpacity }}
+          >
             <span
               aria-hidden
               className="hero-webcar-text pointer-events-none select-none text-center"
@@ -136,7 +139,10 @@ function Index() {
             </span>
           </div>
           {/* Headline sobre o W do WEBCAR */}
-          <div className="absolute left-6 top-5 z-[4] max-w-[calc(100%-48px)] text-left md:left-16 md:top-8 md:max-w-[700px] lg:top-10">
+          <div
+            className="absolute left-6 top-5 z-[4] max-w-[calc(100%-48px)] text-left will-change-transform md:left-16 md:top-8 md:max-w-[700px] lg:top-10"
+            style={{ transform: `translate3d(0, ${headlineY}px, 0)`, opacity: heroOpacity }}
+          >
             <h2
               className="hero-ui hero-ui-2 text-[#0A2540]"
               style={{
@@ -158,8 +164,13 @@ function Index() {
           <img
             src="/porsche.png"
             alt=""
-            className="hero-porsche-img absolute inset-0 h-full w-full"
-            style={{ zIndex: 3, objectFit: "contain", objectPosition: "60% 62%" }}
+            className="hero-porsche-img absolute inset-0 h-full w-full will-change-transform"
+            style={{
+              zIndex: 3,
+              objectFit: "contain",
+              objectPosition: "60% 62%",
+              transform: `translate3d(0, ${porscheY}px, 0) scale(${1 + p * 0.08})`,
+            }}
           />
           {/* Labels verticais — desktop only */}
           <div
@@ -180,8 +191,8 @@ function Index() {
           </div>
           {/* CTAs — abaixo do "R" de WEBCAR */}
           <div
-            className="hero-ui hero-ui-4 absolute z-[5] flex flex-col items-center gap-3 md:items-end"
-            style={{ right: "3%", bottom: "8%" }}
+            className="hero-ui hero-ui-4 absolute z-[5] flex flex-col items-center gap-3 will-change-transform md:items-end"
+            style={{ right: "3%", bottom: "8%", transform: `translate3d(0, ${ctasY}px, 0)`, opacity: heroOpacity }}
           >
             <AcceleratorButton to="/estoque" label="Ver carros" />
             <a
