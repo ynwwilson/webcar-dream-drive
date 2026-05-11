@@ -299,15 +299,18 @@
   position: relative;
   width: 320px;
   max-width: 100%;
-  height: 78px;
-  background: linear-gradient(135deg, #2E7CF6 0%, #4A95FF 100%);
-  border: 3px solid #6BA8FF;
-  border-radius: 50px;
+  height: 56px;
+  background: linear-gradient(180deg, #1a2540 0%, #0f1830 50%, #1a2540 100%);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 999px;
   overflow: hidden;
   cursor: pointer;
   display: flex;
   align-items: center;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(0,200,255,0.1);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.18) inset,
+    0 -1px 0 rgba(0,0,0,0.4) inset,
+    0 8px 24px rgba(0,0,0,0.35);
   transition: transform 0.1s, box-shadow 0.2s, border-color 0.2s;
   user-select: none;
   -webkit-user-select: none;
@@ -317,17 +320,20 @@
 .accel-fill {
   position: absolute;
   top: 0; left: 0; height: 100%;
-  background: linear-gradient(90deg, #001133, #0055ff, #00e5ff);
-  box-shadow: inset 0 0 10px rgba(255,255,255,0.5), 0 0 30px rgba(0,229,255,0.5);
-  border-radius: 50px;
+  background: linear-gradient(180deg, #4a90ff 0%, #1e5fcc 50%, #0a3a99 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.45),
+    inset 0 -1px 0 rgba(0,0,0,0.35),
+    0 0 18px rgba(46,124,246,0.35);
+  border-radius: 999px;
   transition: background 0.2s, box-shadow 0.2s;
 }
 .accel-fill::after {
   content: '';
   position: absolute;
-  top: 0; right: 0; bottom: 50%; left: 0;
-  background: linear-gradient(180deg, rgba(255,255,255,0.3) 0%, transparent 100%);
-  border-radius: 50px 50px 0 0;
+  top: 0; right: 0; bottom: 55%; left: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.05) 100%);
+  border-radius: 999px 999px 0 0;
 }
 .accel-text {
   position: absolute; inset: 0;
@@ -335,16 +341,20 @@
   z-index: 10; pointer-events: none; text-align: center;
 }
 .accel-speed {
-  font-size: 30px; font-weight: 900; color: #fff; line-height: 1;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.8), 0 0 10px rgba(0,229,255,0.5);
-  font-variant-numeric: tabular-nums;
+  font-size: 22px; font-weight: 800; line-height: 1;
+  background: linear-gradient(180deg, #ffffff 0%, #b8c8e0 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.4);
+  font-variant-numeric: tabular-nums; letter-spacing: -0.02em;
 }
 .accel-speed span {
-  font-size: 13px; color: #00e5ff; font-weight: 700; letter-spacing: 1px; margin-left: 6px;
+  font-size: 10px; color: #8aa6d0; -webkit-text-fill-color: #8aa6d0;
+  font-weight: 600; letter-spacing: 1.5px; margin-left: 5px;
 }
 .accel-label {
-  font-size: 10px; color: #8899aa; text-transform: uppercase; letter-spacing: 2.5px;
-  margin-top: 4px; font-weight: 600;
+  font-size: 8px; color: #6a7a95; text-transform: uppercase; letter-spacing: 3px;
+  margin-top: 3px; font-weight: 600;
 }
 .accel-btn.is-struggling { animation: accelShake 0.1s infinite; border-color: #ff0000; box-shadow: 0 0 40px rgba(255,0,0,0.6), inset 0 0 20px rgba(255,0,0,0.2); }
 .accel-btn.is-struggling .accel-fill { background: linear-gradient(90deg, #660000, #ff0000, #ff4444); box-shadow: inset 0 0 15px rgba(255,255,255,0.8), 0 0 40px rgba(255,0,0,0.9); }
