@@ -87,10 +87,6 @@ function Index() {
             <Link to="/" className="flex items-center">
               <img src={webcarLogo} alt="WebCar" className="h-9 w-auto md:h-10" />
             </Link>
-            <span className="hidden h-px w-6 bg-[#0A2540] opacity-30 md:block" />
-            <p className="eyebrow hidden text-[11px] text-[#6B7280] md:block">
-              Est. 2014 · Patos de Minas/MG
-            </p>
           </div>
           <nav className="hidden items-center gap-3 md:flex">
             {navLinks.map((l, i) => (
