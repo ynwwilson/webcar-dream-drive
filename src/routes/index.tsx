@@ -155,11 +155,11 @@ function Index() {
           {/* CTAs — abaixo do "R" de WEBCAR */}
           <div
             className="hero-ui hero-ui-4 absolute z-[5] flex flex-col items-center gap-3 md:items-end"
-            style={{ right: "10%", bottom: "8%" }}
+            style={{ right: "3%", bottom: "8%" }}
           >
             <Link
               to="/estoque"
-              className="inline-flex items-center justify-center rounded-full bg-[#2E7CF6] px-8 py-4 text-base font-semibold text-white transition-colors hover:bg-[#1E5FCC]"
+              className="inline-flex items-center justify-center rounded-full bg-[#2E7CF6] px-12 py-5 text-lg font-semibold text-white transition-colors hover:bg-[#1E5FCC]"
             >
               Ver estoque →
             </Link>
@@ -167,7 +167,7 @@ function Index() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noreferrer"
-              className="text-sm font-semibold text-[#0A2540] underline underline-offset-4 hover:opacity-70"
+              className="text-base font-semibold text-[#0A2540] underline underline-offset-4 hover:opacity-70"
             >
               Falar no WhatsApp →
             </a>
