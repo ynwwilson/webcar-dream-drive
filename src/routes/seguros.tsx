@@ -100,7 +100,7 @@ function SegurosPage() {
         {/* Guincho — vindo da direita, gigante, pode sobrepor o texto */}
         <div
           aria-hidden
-          className="page-transition pointer-events-none absolute right-[-28%] top-1/2 z-0 hidden w-[105%] max-w-none -translate-y-1/2 select-none md:block lg:right-[-22%] lg:w-[95%] xl:right-[-18%] xl:w-[88%]"
+          className="page-transition pointer-events-none absolute right-[-32%] top-1/2 z-0 hidden w-[105%] max-w-none -translate-y-1/2 select-none md:block lg:right-[-26%] lg:w-[95%] xl:right-[-22%] xl:w-[88%]"
           style={{ animationDelay: "0.05s" }}
         >
           <img
