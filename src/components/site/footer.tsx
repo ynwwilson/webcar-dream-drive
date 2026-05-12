@@ -22,10 +22,11 @@ export function SiteFooter() {
           </ul>
         </div>
         <div>
-          <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-[#6B7280]">Estoque</p>
+          <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-[#6B7280]">Serviços</p>
           <ul className="space-y-2 text-sm text-[#0A0A0A]/80">
             <li><Link to="/estoque" className="hover:text-[#0A0A0A]">Todos os carros</Link></li>
-            <li><Link to="/estoque" className="hover:text-[#0A0A0A]">Destaques</Link></li>
+            <li><Link to="/ficha-cadastral" className="hover:text-[#0A0A0A]">Ficha cadastral</Link></li>
+            <li><Link to="/vender-veiculo" className="hover:text-[#0A0A0A]">Vender meu veículo</Link></li>
             <li><Link to="/contato" className="hover:text-[#0A0A0A]">Fale conosco</Link></li>
           </ul>
         </div>

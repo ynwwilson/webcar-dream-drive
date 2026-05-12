@@ -8,6 +8,7 @@ const links = [
   { to: "/estoque", label: "Estoque" },
   { to: "/financiamento", label: "Financiamento" },
   { to: "/seguros", label: "Seguros" },
+  { to: "/ficha-cadastral", label: "Ficha Cadastral" },
   { to: "/sobre", label: "Sobre" },
   { to: "/contato", label: "Contato" },
 ] as const;

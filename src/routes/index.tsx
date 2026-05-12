@@ -6,6 +6,7 @@ import { SiteFooter } from "@/components/site/footer";
 import { CarCard } from "@/components/site/car-card";
 import { WhatsAppIcon, WHATSAPP_URL } from "@/components/site/whatsapp-icon";
 import { AcceleratorButton } from "@/components/site/accelerator-button";
+import { ServicesBanner } from "@/components/site/services-banner";
 import { cars } from "@/data/cars";
 import cliente1 from "@/assets/cliente-1.webp";
 import cliente2 from "@/assets/cliente-2.webp";
@@ -341,6 +342,9 @@ function Index() {
           </div>
         </div>
       </section>
+
+      {/* SERVIÇOS — Ficha Cadastral + Vender Veículo */}
+      <ServicesBanner />
 
       {/* CTA FINAL */}
       <section className="bg-white px-4 py-24 md:px-8 md:py-32">
