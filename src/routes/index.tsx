@@ -169,7 +169,7 @@ function Index() {
           </div>
           {/* Porsche */}
           <img
-            src="/porsche.png"
+            src="/porsche.webp"
             alt=""
             className="hero-porsche-img absolute inset-0 h-full w-full will-change-transform"
             style={{
