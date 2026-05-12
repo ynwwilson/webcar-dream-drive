@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { WhatsAppIcon, WHATSAPP_URL } from "./whatsapp-icon";
-import logo from "@/assets/webcar-logo-color.png";
+import logo from "@/assets/webcar-logo-color.webp";
 
 const links = [
   { to: "/estoque", label: "Estoque" },

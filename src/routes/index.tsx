@@ -7,19 +7,19 @@ import { CarCard } from "@/components/site/car-card";
 import { WhatsAppIcon, WHATSAPP_URL } from "@/components/site/whatsapp-icon";
 import { AcceleratorButton } from "@/components/site/accelerator-button";
 import { cars } from "@/data/cars";
-import cliente1 from "@/assets/cliente-1.png";
-import cliente2 from "@/assets/cliente-2.png";
-import cliente3 from "@/assets/cliente-3.png";
-import cliente4 from "@/assets/cliente-4.png";
-import cliente5 from "@/assets/cliente-5.png";
-import cliente6 from "@/assets/cliente-6.png";
-import cliente7 from "@/assets/cliente-7.png";
-import cliente8 from "@/assets/cliente-8.png";
-import cliente9 from "@/assets/cliente-9.png";
-import cliente10 from "@/assets/cliente-10.png";
-import cliente11 from "@/assets/cliente-11.png";
-import cliente12 from "@/assets/cliente-12.png";
-import webcarLogo from "@/assets/webcar-logo-color.png";
+import cliente1 from "@/assets/cliente-1.webp";
+import cliente2 from "@/assets/cliente-2.webp";
+import cliente3 from "@/assets/cliente-3.webp";
+import cliente4 from "@/assets/cliente-4.webp";
+import cliente5 from "@/assets/cliente-5.webp";
+import cliente6 from "@/assets/cliente-6.webp";
+import cliente7 from "@/assets/cliente-7.webp";
+import cliente8 from "@/assets/cliente-8.webp";
+import cliente9 from "@/assets/cliente-9.webp";
+import cliente10 from "@/assets/cliente-10.webp";
+import cliente11 from "@/assets/cliente-11.webp";
+import cliente12 from "@/assets/cliente-12.webp";
+import webcarLogo from "@/assets/webcar-logo-color.webp";
 
 export const Route = createFileRoute("/")({
   head: () => ({
