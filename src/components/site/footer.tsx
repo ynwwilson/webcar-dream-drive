@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Instagram, Facebook, Youtube, MapPin } from "lucide-react";
-import logo from "@/assets/webcar-logo-color.png";
+import logo from "@/assets/webcar-logo-color.webp";
 
 export function SiteFooter() {
   return (
