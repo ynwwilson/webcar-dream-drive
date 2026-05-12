@@ -17,6 +17,27 @@ html, body { overflow-x: hidden; }
   will-change: opacity, transform;
 }
 
+/* View Transitions API — fade nativo, GPU, sem custo de JS */
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 220ms;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  ::view-transition-old(root) {
+    animation-name: vt-fade-out;
+  }
+  ::view-transition-new(root) {
+    animation-name: vt-fade-in;
+  }
+}
+@keyframes vt-fade-out {
+  to { opacity: 0; }
+}
+@keyframes vt-fade-in {
+  from { opacity: 0; }
+}
+
 /* Element entrance animations (staggered for grids) */
 @keyframes fade-up {
   from { opacity: 0; transform: translateY(18px); }
