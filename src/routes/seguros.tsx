@@ -83,20 +83,8 @@ function SegurosPage() {
 
       {/* HERO */}
       <section
-        className="relative w-full overflow-hidden pt-24 pb-12 md:pt-20 md:pb-16 lg:min-h-[88vh]"
-        style={{ background: "linear-gradient(180deg, #FFFFFF 0%, #EEF1F5 100%)" }}
+        className="relative w-full overflow-hidden bg-white pt-24 pb-12 md:pt-20 md:pb-16 lg:min-h-[88vh]"
       >
-        {/* Ambient blue glow */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute right-[-10%] top-1/2 h-[80vw] w-[80vw] -translate-y-1/2 rounded-full md:h-[55vw] md:w-[55vw]"
-          style={{
-            background:
-              "radial-gradient(circle, rgba(46,124,246,0.22) 0%, transparent 70%)",
-            filter: "blur(80px)",
-          }}
-        />
-
         {/* Guincho — vindo da direita, gigante, pode sobrepor o texto */}
         <div
           aria-hidden
