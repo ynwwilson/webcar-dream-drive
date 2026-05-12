@@ -238,7 +238,15 @@ function EstoquePage() {
               </div>
             ) : (
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {visible.map((c) => <CarCard key={c.id} car={c} />)}
+                {visible.map((c, i) => (
+                  <div
+                    key={c.id}
+                    className="animate-fade-up"
+                    style={{ animationDelay: `${Math.min(i * 50, 400)}ms` }}
+                  >
+                    <CarCard car={c} />
+                  </div>
+                ))}
               </div>
             )}
 

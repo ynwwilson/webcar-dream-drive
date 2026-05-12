@@ -21,9 +21,9 @@ export type Car = {
   options: string[];
 };
 
-// Helper pra gerar galeria de imagens automaticamente
+// Helper pra gerar galeria de imagens automaticamente (WebP full quality)
 const gallery = (slug: string, count: number): string[] =>
-  Array.from({ length: count }, (_, i) => `/cars/${slug}/${String(i + 1).padStart(2, "0")}.jpeg`);
+  Array.from({ length: count }, (_, i) => `/cars/${slug}/${String(i + 1).padStart(2, "0")}.webp`);
 
 // Helper pra extrair opcionais comuns da descrição
 const extractOptions = (desc: string): string[] => {
@@ -72,7 +72,7 @@ const car = (
   transmission,
   color,
   doors,
-  image: `/cars/${slug}/01.jpeg`,
+  image: `/cars/${slug}/01-thumb.webp`,
   gallery: gallery(slug, photoCount),
   description,
   options: extractOptions(description),

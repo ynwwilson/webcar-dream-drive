@@ -63,7 +63,7 @@ function VeiculoPage() {
           {/* Galeria */}
           <div>
             <div className="overflow-hidden rounded-2xl bg-secondary">
-              <img src={gallery[active]} alt={car.fullName} className="aspect-[4/3] w-full object-cover" />
+              <img src={gallery[active]} alt={car.fullName} fetchPriority="high" decoding="async" className="aspect-[4/3] w-full object-cover transition-opacity duration-300" />
             </div>
             {gallery.length > 1 && (
               <div className="mt-3 grid grid-cols-5 gap-3">
@@ -75,7 +75,7 @@ function VeiculoPage() {
                       active === i ? "border-accent-blue" : "border-transparent"
                     }`}
                   >
-                    <img src={g} alt="" className="aspect-square w-full object-cover" />
+                    <img src={g} alt="" loading="lazy" decoding="async" className="aspect-square w-full object-cover" />
                   </button>
                 ))}
                 {gallery.length > 4 && (
@@ -84,7 +84,7 @@ function VeiculoPage() {
                     className="group relative overflow-hidden rounded-lg border-2 border-transparent"
                     aria-label={`Ver todas as ${gallery.length} fotos`}
                   >
-                    <img src={gallery[4]} alt="" className="aspect-square w-full object-cover" />
+                    <img src={gallery[4]} alt="" loading="lazy" decoding="async" className="aspect-square w-full object-cover" />
                     <div className="absolute inset-0 flex items-center justify-center bg-black/65 transition-colors group-hover:bg-black/75">
                       <span className="text-sm font-semibold text-accent-blue">
                         Ver mais
@@ -125,7 +125,7 @@ function VeiculoPage() {
                         }}
                         className="overflow-hidden rounded-lg"
                       >
-                        <img src={g} alt="" className="aspect-square w-full object-cover transition-transform hover:scale-105" />
+                        <img src={g} alt="" loading="lazy" decoding="async" className="aspect-square w-full object-cover transition-transform duration-300 hover:scale-105" />
                       </button>
                     ))}
                   </div>
