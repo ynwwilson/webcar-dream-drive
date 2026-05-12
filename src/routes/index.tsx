@@ -347,29 +347,6 @@ function Index() {
       <ServicesBanner />
 
       {/* CTA FINAL */}
-      <section className="bg-white px-4 py-24 md:px-8 md:py-32">
-        <div className="mx-auto flex max-w-[720px] flex-col items-center gap-6 text-center">
-          <h2 className="text-4xl text-[#0A0A0A] md:text-6xl">
-            Pronto pra encontrar seu próximo carro?
-          </h2>
-          <p className="text-base text-[#6B7280] md:text-lg">
-            Resposta em minutos. Atendimento humano. Sem enrolação.
-          </p>
-          <a
-            href={WHATSAPP_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="mt-2 inline-flex items-center gap-3 rounded-full bg-[#2E7CF6] px-10 py-4 text-base font-semibold text-white transition-all duration-200 hover:bg-[#2566D1]"
-          >
-            <WhatsAppIcon className="h-5 w-5" />
-            Falar no WhatsApp
-          </a>
-          <p className="text-xs text-[#6B7280]">
-            Atendimento de seg a sáb · WhatsApp · Patos de Minas/MG
-          </p>
-        </div>
-      </section>
-
       {/* CROSS-SELL — Webseguros */}
       <section className="bg-[#0A2540] py-20">
         <div className="mx-auto grid max-w-5xl items-center gap-10 px-6 md:grid-cols-2 md:px-16">
@@ -392,6 +369,27 @@ function Index() {
               Conhecer <span aria-hidden>→</span>
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* CTA FINAL — última seção */}
+      <section className="bg-white px-4 py-24 md:px-8 md:py-32">
+        <div className="mx-auto flex max-w-[720px] flex-col items-center gap-6 text-center">
+          <h2 className="text-4xl text-[#0A0A0A] md:text-6xl">
+            Pronto pra encontrar seu próximo carro?
+          </h2>
+          <p className="text-base text-[#6B7280] md:text-lg">
+            Resposta em minutos. Atendimento humano. Sem enrolação.
+          </p>
+          <Link
+            to="/estoque"
+            className="mt-2 inline-flex items-center gap-3 rounded-full bg-[#2E7CF6] px-10 py-4 text-base font-semibold text-white transition-all duration-200 hover:bg-[#2566D1]"
+          >
+            Ver estoque
+          </Link>
+          <p className="text-xs text-[#6B7280]">
+            Atendimento de seg a sáb · WhatsApp · Patos de Minas/MG
+          </p>
         </div>
       </section>
 
