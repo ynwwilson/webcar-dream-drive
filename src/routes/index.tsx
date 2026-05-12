@@ -79,7 +79,7 @@ function Index() {
       {/* HERO — 3 zonas verticais (TOP / MID / BOTTOM) */}
       <section
         className="hero-webcar relative flex h-[100vh] w-full flex-col overflow-hidden"
-        style={{ background: "linear-gradient(180deg, #FFFFFF 0%, #EEF1F5 100%)" }}
+        style={{ background: "#FFFFFF" }}
       >
         {/* ZONA TOP — header */}
         <header
@@ -119,7 +119,7 @@ function Index() {
           {/* fundo */}
           <div
             className="hero-fade-bg absolute inset-0"
-            style={{ zIndex: 1, background: "linear-gradient(180deg, #FFFFFF 0%, #EEF1F5 100%)" }}
+            style={{ zIndex: 1, background: "#FFFFFF" }}
           />
           {/* WEBCAR */}
           <div
