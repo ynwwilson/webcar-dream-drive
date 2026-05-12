@@ -83,84 +83,99 @@ function SegurosPage() {
 
       {/* HERO */}
       <section
-        className="relative w-full overflow-hidden pt-24 pb-10 md:pt-28 md:pb-14"
+        className="relative w-full overflow-hidden pt-24 pb-12 md:pt-20 md:pb-16 lg:min-h-[88vh]"
         style={{ background: "linear-gradient(180deg, #FFFFFF 0%, #EEF1F5 100%)" }}
       >
         {/* Ambient blue glow */}
         <div
           aria-hidden
-          className="pointer-events-none absolute left-1/2 top-1/3 h-[80vw] w-[80vw] -translate-x-1/2 -translate-y-1/2 rounded-full md:h-[55vw] md:w-[55vw]"
+          className="pointer-events-none absolute right-[-10%] top-1/2 h-[80vw] w-[80vw] -translate-y-1/2 rounded-full md:h-[55vw] md:w-[55vw]"
           style={{
             background:
-              "radial-gradient(circle, rgba(46,124,246,0.20) 0%, transparent 70%)",
+              "radial-gradient(circle, rgba(46,124,246,0.22) 0%, transparent 70%)",
             filter: "blur(80px)",
           }}
         />
 
-        <div className="container relative z-10 mx-auto px-6">
-          <div className="mx-auto flex max-w-5xl flex-col items-center text-center">
+        {/* Guincho — vindo da direita, gigante, pode sobrepor o texto */}
+        <div
+          aria-hidden
+          className="page-transition pointer-events-none absolute right-[-12%] top-1/2 z-0 hidden w-[78%] -translate-y-1/2 select-none md:block lg:right-[-8%] lg:w-[72%]"
+          style={{ animationDelay: "0.05s" }}
+        >
+          <img
+            src={heroTowTruck}
+            alt=""
+            className="h-auto w-full object-contain"
+            style={{ filter: "drop-shadow(0 30px 60px rgba(10,37,64,0.25))" }}
+            draggable={false}
+          />
+        </div>
+
+        <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-10">
+          <div className="max-w-2xl text-left">
             {/* Badges */}
             <div
-              className="page-transition flex flex-wrap items-center justify-center gap-2"
+              className="page-transition flex flex-wrap items-center gap-2"
               style={{ animationDelay: "0.1s" }}
             >
               <Badge>Assistência 24h Premium</Badge>
               <Badge>Rastreamento e Bloqueio</Badge>
             </div>
 
-            {/* Headline — 2 linhas */}
+            {/* Headline */}
             <h1
-              className="page-transition mt-5 normal-case text-[#0A2540]"
+              className="page-transition mt-6 normal-case text-[#0A2540]"
               style={{
                 ...manrope,
                 fontWeight: 800,
-                fontSize: "clamp(34px, 5.4vw, 64px)",
+                fontSize: "clamp(38px, 5.6vw, 72px)",
                 letterSpacing: "-0.035em",
-                lineHeight: 1.05,
+                lineHeight: 1.02,
                 animationDelay: "0.2s",
               }}
             >
-              Rastreamento e assistência 24h
-              <br />
-              <span className="text-[#2E7CF6]">pro seu carro, sem burocracia.</span>
+              Rastreamento e <br />
+              assistência 24h <br />
+              <span className="text-[#2E7CF6]">pro seu carro.</span>
             </h1>
+
+            {/* Guincho — mobile, entre headline e subtexto */}
+            <div
+              className="page-transition relative my-6 w-full md:hidden"
+              style={{ animationDelay: "0.25s" }}
+            >
+              <img
+                src={heroTowTruck}
+                alt="Guincho WebCar"
+                className="mx-auto h-auto w-full max-w-[480px] select-none object-contain"
+                style={{ filter: "drop-shadow(0 15px 35px rgba(10,37,64,0.18))" }}
+                draggable={false}
+              />
+            </div>
 
             {/* Subtext */}
             <p
-              className="page-transition mx-auto mt-4 max-w-xl text-base leading-relaxed text-[#6B7280] md:text-[17px]"
-              style={{ animationDelay: "0.28s" }}
+              className="page-transition mt-6 max-w-md text-base leading-relaxed text-[#6B7280] md:text-[17px]"
+              style={{ animationDelay: "0.3s" }}
             >
               Quebrou, furou o pneu, perdeu a chave, acabou a bateria?{" "}
               <strong className="text-[#0A2540]">A gente resolve.</strong>
             </p>
 
-            {/* Tow truck — grande, passando por baixo do título */}
-            <div
-              className="page-transition relative -mt-2 w-full md:-mt-6"
-              style={{ animationDelay: "0.05s" }}
-            >
-              <img
-                src={heroTowTruck}
-                alt="Guincho WebCar"
-                className="mx-auto h-auto w-full max-w-[1100px] select-none object-contain"
-                style={{ filter: "drop-shadow(0 25px 45px rgba(10,37,64,0.22))" }}
-                draggable={false}
-              />
-            </div>
-
             {/* Preço */}
-            <div className="page-transition -mt-2 md:-mt-4" style={{ animationDelay: "0.4s" }}>
+            <div className="page-transition mt-6" style={{ animationDelay: "0.4s" }}>
               <p className="text-base font-semibold text-[#2E7CF6] md:text-lg">
-                Planos a partir de R$ 29,90/mês — apenas 7 dias de carência
+                Planos a partir de R$ 29,90/mês
               </p>
               <p className="mt-1 text-sm text-[#6B7280]">
-                Sem seguro · Sem franquia · Sem burocracia
+                Apenas 7 dias de carência · Sem franquia · Sem burocracia
               </p>
             </div>
 
-            {/* CTAs — abaixo do guincho */}
+            {/* CTAs */}
             <div
-              className="page-transition mt-6 flex flex-col gap-3 sm:flex-row"
+              className="page-transition mt-7 flex flex-col gap-3 sm:flex-row"
               style={{ animationDelay: "0.5s" }}
             >
               <a
@@ -175,7 +190,7 @@ function SegurosPage() {
               <a
                 href="#tipos"
                 onClick={scrollToTipos}
-                className="inline-flex items-center justify-center rounded-full border border-[#0A2540] px-7 py-3.5 text-sm font-semibold text-[#0A2540] transition hover:bg-[#0A2540] hover:text-white"
+                className="inline-flex items-center justify-center rounded-full border border-[#0A2540] bg-white/70 px-7 py-3.5 text-sm font-semibold text-[#0A2540] backdrop-blur transition hover:bg-[#0A2540] hover:text-white"
               >
                 Saber mais
               </a>
@@ -183,7 +198,7 @@ function SegurosPage() {
 
             {/* Trust indicators */}
             <div
-              className="page-transition mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-[#6B7280]"
+              className="page-transition mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-[#6B7280]"
               style={{ animationDelay: "0.6s" }}
             >
               <Trust>Carência de 7 dias</Trust>
