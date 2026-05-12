@@ -124,35 +124,37 @@ function EstoquePage() {
       </FilterGroup>
       <FilterGroup label={`Preço até R$ ${maxPrice.toLocaleString("pt-BR")}`}>
         <input type="range" min={50000} max={STOCK_LIMITS.maxPrice} step={10000} value={maxPrice} onChange={(e) => setMaxPrice(+e.target.value)} className="w-full accent-[var(--accent-blue)]" />
-        <input
-          type="number"
-          min={0}
-          max={STOCK_LIMITS.maxPrice}
-          step={1000}
-          value={maxPrice}
-          onChange={(e) => {
-            const v = +e.target.value;
-            if (!Number.isFinite(v)) return;
-            setMaxPrice(Math.max(0, Math.min(STOCK_LIMITS.maxPrice, v)));
-          }}
-          className="filter-select mt-2"
-        />
+        <div className="relative mt-2">
+          <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-sm text-muted-foreground">R$</span>
+          <input
+            type="text"
+            inputMode="numeric"
+            value={maxPrice.toLocaleString("pt-BR")}
+            onChange={(e) => {
+              const digits = e.target.value.replace(/\D/g, "");
+              const v = digits ? parseInt(digits, 10) : 0;
+              setMaxPrice(Math.min(STOCK_LIMITS.maxPrice, v));
+            }}
+            className="filter-select pl-10"
+          />
+        </div>
       </FilterGroup>
       <FilterGroup label={`KM até ${maxKm.toLocaleString("pt-BR")}`}>
         <input type="range" min={5000} max={STOCK_LIMITS.maxKm} step={5000} value={maxKm} onChange={(e) => setMaxKm(+e.target.value)} className="w-full accent-[var(--accent-blue)]" />
-        <input
-          type="number"
-          min={0}
-          max={STOCK_LIMITS.maxKm}
-          step={1000}
-          value={maxKm}
-          onChange={(e) => {
-            const v = +e.target.value;
-            if (!Number.isFinite(v)) return;
-            setMaxKm(Math.max(0, Math.min(STOCK_LIMITS.maxKm, v)));
-          }}
-          className="filter-select mt-2"
-        />
+        <div className="relative mt-2">
+          <input
+            type="text"
+            inputMode="numeric"
+            value={maxKm.toLocaleString("pt-BR")}
+            onChange={(e) => {
+              const digits = e.target.value.replace(/\D/g, "");
+              const v = digits ? parseInt(digits, 10) : 0;
+              setMaxKm(Math.min(STOCK_LIMITS.maxKm, v));
+            }}
+            className="filter-select pr-12"
+          />
+          <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-sm text-muted-foreground">km</span>
+        </div>
       </FilterGroup>
       <button onClick={reset} className="text-sm font-semibold text-accent-blue hover:underline">
         Limpar filtros
