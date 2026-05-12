@@ -178,7 +178,7 @@ function SegurosPage() {
               <a
                 href="#tipos"
                 onClick={scrollToTipos}
-                className="inline-flex items-center justify-center rounded-full border border-[#0A2540] bg-white/70 px-7 py-3.5 text-sm font-semibold text-[#0A2540] backdrop-blur transition hover:bg-[#0A2540] hover:text-white"
+                className="inline-flex items-center justify-center rounded-full border border-[#0A2540] px-7 py-3.5 text-sm font-semibold text-[#0A2540] transition hover:bg-[#0A2540] hover:text-white"
               >
                 Saber mais
               </a>
@@ -369,7 +369,7 @@ function BuildingIcon() {
 
 function Badge({ children }: { children: React.ReactNode }) {
   return (
-    <div className="inline-flex items-center gap-2 rounded-full border border-[#E5E7EB] bg-white/70 px-4 py-1.5 shadow-sm backdrop-blur">
+    <div className="inline-flex items-center gap-2 rounded-full px-1 py-1.5">
       <span className="relative flex h-2 w-2">
         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#2E7CF6] opacity-60" />
         <span className="relative inline-flex h-2 w-2 rounded-full bg-[#2E7CF6]" />
