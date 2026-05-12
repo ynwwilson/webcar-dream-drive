@@ -7,6 +7,7 @@ import logo from "@/assets/webcar-logo-color.webp";
 const links = [
   { to: "/estoque", label: "Estoque" },
   { to: "/financiamento", label: "Financiamento" },
+  { to: "/seguros", label: "Seguros" },
   { to: "/sobre", label: "Sobre" },
   { to: "/contato", label: "Contato" },
 ] as const;

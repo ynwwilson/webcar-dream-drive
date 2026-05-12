@@ -66,6 +66,7 @@ function Index() {
   const navLinks = [
     { to: "/estoque", label: "Estoque" },
     { to: "/financiamento", label: "Financiamento" },
+    { to: "/seguros", label: "Seguros" },
     { to: "/sobre", label: "Sobre" },
     { to: "/contato", label: "Contato" },
   ] as const;
@@ -362,6 +363,31 @@ function Index() {
           <p className="text-xs text-[#6B7280]">
             Atendimento de seg a sáb · WhatsApp · Patos de Minas/MG
           </p>
+        </div>
+      </section>
+
+      {/* CROSS-SELL — Webseguros */}
+      <section className="bg-[#0A2540] py-20">
+        <div className="mx-auto grid max-w-5xl items-center gap-10 px-6 md:grid-cols-2 md:px-16">
+          <div>
+            <p className="text-xs font-medium uppercase tracking-[0.3em] text-[#A0BCE0]">
+              Grupo Web
+            </p>
+            <h2 className="mt-4 text-3xl font-bold leading-tight tracking-tight text-white md:text-4xl" style={{ fontFamily: "'Manrope', Inter, system-ui, sans-serif", letterSpacing: "-0.02em" }}>
+              Comprou o carro?<br />Protege ele também.
+            </h2>
+            <p className="mt-5 max-w-md text-base text-[#A0BCE0]">
+              Webseguros — corretora de seguros do nosso grupo. Auto, vida, residencial e empresarial.
+            </p>
+          </div>
+          <div className="flex md:justify-end">
+            <Link
+              to="/seguros"
+              className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-[#0A2540] transition hover:bg-white/90"
+            >
+              Conhecer <span aria-hidden>→</span>
+            </Link>
+          </div>
         </div>
       </section>
 
