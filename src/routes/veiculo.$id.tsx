@@ -49,6 +49,7 @@ function VeiculoPage() {
   const gallery = car.gallery.length > 0 ? car.gallery : [car.image];
   const [active, setActive] = useState(0);
   const [simulatorOpen, setSimulatorOpen] = useState(false);
+  const [showAll, setShowAll] = useState(false);
 
   return (
     <div className="min-h-screen bg-background">
@@ -66,7 +67,7 @@ function VeiculoPage() {
             </div>
             {gallery.length > 1 && (
               <div className="mt-3 grid grid-cols-5 gap-3">
-                {gallery.map((g, i) => (
+                {gallery.slice(0, 4).map((g, i) => (
                   <button
                     key={i}
                     onClick={() => setActive(i)}
@@ -77,6 +78,58 @@ function VeiculoPage() {
                     <img src={g} alt="" className="aspect-square w-full object-cover" />
                   </button>
                 ))}
+                {gallery.length > 4 && (
+                  <button
+                    onClick={() => setShowAll(true)}
+                    className="group relative overflow-hidden rounded-lg border-2 border-transparent"
+                    aria-label={`Ver todas as ${gallery.length} fotos`}
+                  >
+                    <img src={gallery[4]} alt="" className="aspect-square w-full object-cover" />
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/65 transition-colors group-hover:bg-black/75">
+                      <span className="text-sm font-semibold text-accent-blue">
+                        Ver mais
+                      </span>
+                    </div>
+                  </button>
+                )}
+              </div>
+            )}
+
+            {/* Lightbox: todas as fotos */}
+            {showAll && (
+              <div
+                className="fixed inset-0 z-50 overflow-y-auto bg-black/80 p-4 md:p-8"
+                onClick={() => setShowAll(false)}
+              >
+                <div className="mx-auto max-w-5xl">
+                  <div className="mb-4 flex items-center justify-between">
+                    <p className="text-sm font-semibold text-white">
+                      {gallery.length} fotos · {car.fullName}
+                    </p>
+                    <button
+                      onClick={(e) => { e.stopPropagation(); setShowAll(false); }}
+                      className="rounded-full bg-white/10 p-2 text-white hover:bg-white/20"
+                      aria-label="Fechar"
+                    >
+                      <X className="h-5 w-5" />
+                    </button>
+                  </div>
+                  <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
+                    {gallery.map((g, i) => (
+                      <button
+                        key={i}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setActive(i);
+                          setShowAll(false);
+                        }}
+                        className="overflow-hidden rounded-lg"
+                      >
+                        <img src={g} alt="" className="aspect-square w-full object-cover transition-transform hover:scale-105" />
+                      </button>
+                    ))}
+                  </div>
+                </div>
               </div>
             )}
           </div>
