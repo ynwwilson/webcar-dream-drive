@@ -2,6 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site/header";
 import { SiteFooter } from "@/components/site/footer";
 import { WhatsAppIcon } from "@/components/site/whatsapp-icon";
+import { Check } from "lucide-react";
+import heroTowTruck from "@/assets/hero-tow-truck.png";
 
 const COTACAO_URL =
   "https://api.whatsapp.com/send?phone=553438141144&text=Ol%C3%A1%2C%20quero%20uma%20cota%C3%A7%C3%A3o%20de%20seguro";
@@ -81,47 +83,115 @@ function SegurosPage() {
 
       {/* HERO */}
       <section
-        className="relative flex min-h-[60vh] items-center"
+        className="relative flex w-full flex-col items-center overflow-hidden pt-24 pb-16 md:pt-28 md:pb-20"
         style={{ background: "linear-gradient(180deg, #FFFFFF 0%, #EEF1F5 100%)" }}
       >
-        <div className="mx-auto w-full max-w-4xl px-6 py-16 text-center md:py-24">
-          <p className="text-[12px] font-medium uppercase tracking-[0.3em] text-[#6B7280]">
-            Grupo Web · Seguros
-          </p>
-          <h1
-            className="mt-6 font-bold normal-case text-[#0A2540]"
-            style={{
-              ...manrope,
-              fontWeight: 700,
-              fontSize: "clamp(28px, 5vw, 64px)",
-              letterSpacing: "-0.03em",
-              lineHeight: 1.1,
-            }}
-          >
-            A mesma confiança da WebCar.
-            <br />
-            Agora pra proteger o resto da sua vida.
-          </h1>
-          <p className="mx-auto mt-6 max-w-[600px] text-base text-[#6B7280] md:text-[18px]">
-            Webseguros é a corretora de seguros do nosso grupo. Em Patos de Minas, há 12 anos cuidando das duas pontas: do carro que você compra ao seguro que te protege.
-          </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <a
-              href={COTACAO_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#2E7CF6] px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-[#2566D1] sm:w-auto"
+        {/* Ambient blue glow */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute left-1/2 top-0 h-[80vw] w-[80vw] -translate-x-1/2 rounded-full md:h-[55vw] md:w-[55vw]"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(46,124,246,0.18) 0%, transparent 70%)",
+            filter: "blur(80px)",
+          }}
+        />
+
+        <div className="container relative z-10 mx-auto px-6">
+          <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
+            {/* Tow truck image — ACIMA */}
+            <div
+              className="page-transition relative w-full max-w-[640px]"
+              style={{ animationDelay: "0.05s" }}
             >
-              <WhatsAppIcon className="h-4 w-4" />
-              Fazer cotação
-            </a>
-            <a
-              href="#tipos"
-              onClick={scrollToTipos}
-              className="inline-flex w-full items-center justify-center rounded-full border border-[#0A2540] px-7 py-3.5 text-sm font-semibold text-[#0A2540] transition hover:bg-[#0A2540] hover:text-white sm:w-auto"
+              <img
+                src={heroTowTruck}
+                alt="Guincho WebCar"
+                className="h-auto w-full select-none object-contain"
+                style={{ filter: "drop-shadow(0 18px 40px rgba(10,37,64,0.18))" }}
+                draggable={false}
+              />
+            </div>
+
+            {/* Badges */}
+            <div className="page-transition mt-6 flex flex-wrap items-center justify-center gap-2" style={{ animationDelay: "0.15s" }}>
+              <Badge>Assistência 24h Premium</Badge>
+              <Badge>Rastreamento e Bloqueio</Badge>
+            </div>
+
+            {/* Headline */}
+            <h1
+              className="page-transition mt-6 normal-case text-[#0A2540]"
+              style={{
+                ...manrope,
+                fontWeight: 700,
+                fontSize: "clamp(32px, 5.2vw, 68px)",
+                letterSpacing: "-0.03em",
+                lineHeight: 1.05,
+                animationDelay: "0.25s",
+              }}
             >
-              Saber mais
-            </a>
+              Seu carro não tem seguro?
+              <br />
+              <span className="text-[#2E7CF6]">
+                Tenha <span className="text-[#0A2540]">rastreamento</span> e assistência 24h.
+              </span>
+            </h1>
+
+            {/* Subtext */}
+            <p
+              className="page-transition mx-auto mt-6 max-w-[640px] text-base leading-relaxed text-[#6B7280] md:text-[18px]"
+              style={{ animationDelay: "0.35s" }}
+            >
+              Quebrou, furou o pneu, perdeu a chave, acabou a gasolina ou ficou sem
+              bateria? <strong className="text-[#0A2540]">A gente resolve.</strong>
+            </p>
+
+            {/* Price */}
+            <div
+              className="page-transition mt-6"
+              style={{ animationDelay: "0.45s" }}
+            >
+              <p className="text-base font-semibold text-[#2E7CF6] md:text-lg">
+                Planos a partir de R$ 29,90/mês — apenas 7 dias de carência
+              </p>
+              <p className="mt-1 text-sm text-[#6B7280]">
+                Sem seguro · Sem franquia · Sem burocracia
+              </p>
+            </div>
+
+            {/* CTAs */}
+            <div
+              className="page-transition mt-8 flex w-full flex-col items-center justify-center gap-3 sm:w-auto sm:flex-row"
+              style={{ animationDelay: "0.55s" }}
+            >
+              <a
+                href={COTACAO_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#2E7CF6] px-7 py-3.5 text-sm font-semibold text-white transition hover:bg-[#2566D1] sm:w-auto"
+              >
+                <WhatsAppIcon className="h-4 w-4" />
+                Fazer cotação
+              </a>
+              <a
+                href="#tipos"
+                onClick={scrollToTipos}
+                className="inline-flex w-full items-center justify-center rounded-full border border-[#0A2540] px-7 py-3.5 text-sm font-semibold text-[#0A2540] transition hover:bg-[#0A2540] hover:text-white sm:w-auto"
+              >
+                Saber mais
+              </a>
+            </div>
+
+            {/* Trust indicators */}
+            <div
+              className="page-transition mt-7 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-[#6B7280]"
+              style={{ animationDelay: "0.65s" }}
+            >
+              <Trust>Carência de 7 dias</Trust>
+              <Trust>Cobertura Nacional</Trust>
+              <Trust>Rastreamento e Bloqueio</Trust>
+            </div>
           </div>
         </div>
       </section>
@@ -293,5 +363,28 @@ function BuildingIcon() {
       <path d="M3 21h18" />
       <path d="M7 8h2M7 12h2M7 16h2M11 8h0M11 12h0M11 16h0" />
     </svg>
+  );
+}
+
+function Badge({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="inline-flex items-center gap-2 rounded-full border border-[#E5E7EB] bg-white/70 px-4 py-1.5 shadow-sm backdrop-blur">
+      <span className="relative flex h-2 w-2">
+        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#2E7CF6] opacity-60" />
+        <span className="relative inline-flex h-2 w-2 rounded-full bg-[#2E7CF6]" />
+      </span>
+      <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#6B7280]">
+        {children}
+      </span>
+    </div>
+  );
+}
+
+function Trust({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="flex items-center gap-1.5">
+      <Check className="h-4 w-4 text-emerald-500" strokeWidth={2.25} />
+      <span>{children}</span>
+    </div>
   );
 }
