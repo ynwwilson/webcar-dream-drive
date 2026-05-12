@@ -46,11 +46,6 @@ html, body { overflow-x: hidden; }
   will-change: opacity, transform;
 }
 
-/* Smooth image loading: fade from transparent when src loads */
-img {
-  background-color: rgba(0, 0, 0, 0.03);
-}
-
 @media (prefers-reduced-motion: reduce) {
   .page-transition,
   .animate-fade-up,
