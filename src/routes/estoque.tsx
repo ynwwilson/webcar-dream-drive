@@ -152,9 +152,10 @@ function EstoquePage() {
               const v = digits ? parseInt(digits, 10) : 0;
               setMaxKm(Math.min(STOCK_LIMITS.maxKm, v));
             }}
-            className="filter-select pr-12"
+            className="filter-select"
+            style={{ paddingRight: "2.5rem" }}
           />
-          <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-sm text-muted-foreground">km</span>
+          <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-sm font-medium text-muted-foreground">km</span>
         </div>
       </FilterGroup>
       <button onClick={reset} className="text-sm font-semibold text-accent-blue hover:underline">
