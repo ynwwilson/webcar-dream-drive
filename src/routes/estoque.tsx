@@ -24,6 +24,24 @@ const brands = Array.from(new Set(cars.map((c) => c.brand))).sort();
 const fuels = Array.from(new Set(cars.map((c) => c.fuel)));
 const transmissions = Array.from(new Set(cars.map((c) => c.transmission)));
 
+// Mapeia arquivo da logo → nome da marca (precisa bater EXATO com c.brand em cars.ts)
+const BRAND_LOGOS = [
+  { file: "bmw", label: "BMW" },
+  { file: "chevrolet", label: "Chevrolet" },
+  { file: "fiat", label: "Fiat" },
+  { file: "ford", label: "Ford" },
+  { file: "honda", label: "Honda" },
+  { file: "hyundai", label: "Hyundai" },
+  { file: "jeep", label: "Jeep" },
+  { file: "kia", label: "Kia" },
+  { file: "mercedes", label: "Mercedes-Benz" },
+  { file: "mitsubishi", label: "Mitsubishi" },
+  { file: "nissan", label: "Nissan" },
+  { file: "ram", label: "RAM" },
+  { file: "toyota", label: "Toyota" },
+  { file: "volkswagen", label: "Volkswagen" },
+] as const;
+
 const PAGE_SIZE = 9;
 
 function EstoquePage() {
@@ -96,6 +114,37 @@ function EstoquePage() {
     </div>
   );
 
+  const BrandGrid = (
+    <div className="grid grid-cols-3 gap-2">
+      {BRAND_LOGOS.filter((b) => brands.includes(b.label)).map((b) => {
+        const count = cars.filter((c) => c.brand === b.label).length;
+        const isActive = brand === b.label;
+        return (
+          <button
+            key={b.file}
+            onClick={() => setBrand(brand === b.label ? "" : b.label)}
+            className={`group relative flex aspect-square items-center justify-center rounded-xl border-2 bg-white p-2 transition-all hover:border-[var(--accent-blue)] ${
+              isActive
+                ? "border-[var(--accent-blue)] shadow-md ring-2 ring-[var(--accent-blue)]/20"
+                : "border-gray-200"
+            }`}
+            title={`${b.label} (${count})`}
+            aria-label={`Filtrar por ${b.label}`}
+          >
+            <img
+              src={`/brands/${b.file}.png`}
+              alt={b.label}
+              className="h-8 w-auto object-contain transition-transform group-hover:scale-110"
+            />
+            <span className="absolute -right-1 -top-1 flex h-4 min-w-[1rem] items-center justify-center rounded-full bg-[var(--accent-blue)] px-1 text-[10px] font-bold leading-none text-white">
+              {count}
+            </span>
+          </button>
+        );
+      })}
+    </div>
+  );
+
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
@@ -120,9 +169,15 @@ function EstoquePage() {
 
         <div className="grid grid-cols-1 gap-10 md:grid-cols-[260px_1fr]">
           <aside className="hidden md:block">
-            <div className="sticky top-24 rounded-2xl border bg-card p-6">
-              <p className="mb-5 text-xs font-semibold uppercase tracking-widest text-brand/60">Filtros</p>
-              {FiltersInner}
+            <div className="sticky top-24 space-y-4">
+              <div className="rounded-2xl border bg-card p-6">
+                <p className="mb-5 text-xs font-semibold uppercase tracking-widest text-brand/60">Filtros</p>
+                {FiltersInner}
+              </div>
+              <div className="rounded-2xl border bg-card p-6">
+                <p className="mb-5 text-xs font-semibold uppercase tracking-widest text-brand/60">Por marca</p>
+                {BrandGrid}
+              </div>
             </div>
           </aside>
 
@@ -170,6 +225,10 @@ function EstoquePage() {
               </button>
             </div>
             {FiltersInner}
+            <div className="mt-7">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-brand/60">Por marca</p>
+              {BrandGrid}
+            </div>
           </div>
         </div>
       )}
