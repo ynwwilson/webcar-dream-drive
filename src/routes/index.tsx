@@ -66,6 +66,7 @@ function Index() {
   const navLinks = [
     { to: "/estoque", label: "Estoque" },
     { to: "/financiamento", label: "Financiamento" },
+    { to: "/seguros", label: "Seguros" },
     { to: "/sobre", label: "Sobre" },
     { to: "/contato", label: "Contato" },
   ] as const;
