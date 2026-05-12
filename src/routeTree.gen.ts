@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SobreRouteImport } from './routes/sobre'
+import { Route as SegurosRouteImport } from './routes/seguros'
 import { Route as FinanciamentoRouteImport } from './routes/financiamento'
 import { Route as EstoqueRouteImport } from './routes/estoque'
 import { Route as ContatoRouteImport } from './routes/contato'
@@ -19,6 +20,11 @@ import { Route as VeiculoIdRouteImport } from './routes/veiculo.$id'
 const SobreRoute = SobreRouteImport.update({
   id: '/sobre',
   path: '/sobre',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SegurosRoute = SegurosRouteImport.update({
+  id: '/seguros',
+  path: '/seguros',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FinanciamentoRoute = FinanciamentoRouteImport.update({
@@ -52,6 +58,7 @@ export interface FileRoutesByFullPath {
   '/contato': typeof ContatoRoute
   '/estoque': typeof EstoqueRoute
   '/financiamento': typeof FinanciamentoRoute
+  '/seguros': typeof SegurosRoute
   '/sobre': typeof SobreRoute
   '/veiculo/$id': typeof VeiculoIdRoute
 }
@@ -60,6 +67,7 @@ export interface FileRoutesByTo {
   '/contato': typeof ContatoRoute
   '/estoque': typeof EstoqueRoute
   '/financiamento': typeof FinanciamentoRoute
+  '/seguros': typeof SegurosRoute
   '/sobre': typeof SobreRoute
   '/veiculo/$id': typeof VeiculoIdRoute
 }
@@ -69,6 +77,7 @@ export interface FileRoutesById {
   '/contato': typeof ContatoRoute
   '/estoque': typeof EstoqueRoute
   '/financiamento': typeof FinanciamentoRoute
+  '/seguros': typeof SegurosRoute
   '/sobre': typeof SobreRoute
   '/veiculo/$id': typeof VeiculoIdRoute
 }
@@ -79,6 +88,7 @@ export interface FileRouteTypes {
     | '/contato'
     | '/estoque'
     | '/financiamento'
+    | '/seguros'
     | '/sobre'
     | '/veiculo/$id'
   fileRoutesByTo: FileRoutesByTo
@@ -87,6 +97,7 @@ export interface FileRouteTypes {
     | '/contato'
     | '/estoque'
     | '/financiamento'
+    | '/seguros'
     | '/sobre'
     | '/veiculo/$id'
   id:
@@ -95,6 +106,7 @@ export interface FileRouteTypes {
     | '/contato'
     | '/estoque'
     | '/financiamento'
+    | '/seguros'
     | '/sobre'
     | '/veiculo/$id'
   fileRoutesById: FileRoutesById
@@ -104,6 +116,7 @@ export interface RootRouteChildren {
   ContatoRoute: typeof ContatoRoute
   EstoqueRoute: typeof EstoqueRoute
   FinanciamentoRoute: typeof FinanciamentoRoute
+  SegurosRoute: typeof SegurosRoute
   SobreRoute: typeof SobreRoute
   VeiculoIdRoute: typeof VeiculoIdRoute
 }
@@ -115,6 +128,13 @@ declare module '@tanstack/react-router' {
       path: '/sobre'
       fullPath: '/sobre'
       preLoaderRoute: typeof SobreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/seguros': {
+      id: '/seguros'
+      path: '/seguros'
+      fullPath: '/seguros'
+      preLoaderRoute: typeof SegurosRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/financiamento': {
@@ -160,6 +180,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContatoRoute: ContatoRoute,
   EstoqueRoute: EstoqueRoute,
   FinanciamentoRoute: FinanciamentoRoute,
+  SegurosRoute: SegurosRoute,
   SobreRoute: SobreRoute,
   VeiculoIdRoute: VeiculoIdRoute,
 }
