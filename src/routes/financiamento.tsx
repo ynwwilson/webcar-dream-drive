@@ -87,7 +87,7 @@ function FinanciamentoPage() {
   const whatsappMsg = encodeURIComponent(
     `Olá! Quero solicitar análise de crédito.\n• Valor do veículo: ${formatBRL(valor)}\n• Entrada: ${formatBRL(entrada)}\n• Parcelas: ${parcelas}x\n• Parcela estimada: ${formatBRL(parcela)}`,
   );
-  const whatsappHref = `https://wa.me/5534999999999?text=${whatsappMsg}`;
+  const whatsappHref = `https://api.whatsapp.com/send?phone=553438141144&text=${whatsappMsg}`;
 
   return (
     <div className="min-h-screen bg-white text-[#0A0A0A]">

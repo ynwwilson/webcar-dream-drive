@@ -1,3 +1,5 @@
+import { CONTACT, waLink } from "@/data/contact";
+
 export function WhatsAppIcon({ className = "h-4 w-4" }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden>
@@ -6,5 +8,8 @@ export function WhatsAppIcon({ className = "h-4 w-4" }: { className?: string }) 
   );
 }
 
-export const WHATSAPP_URL =
-  "https://wa.me/5534999999999?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20WebCar";
+// URL padrão do WhatsApp (mantida pra compatibilidade com componentes existentes)
+export const WHATSAPP_URL = waLink();
+
+// Re-export utilitários do módulo de contato
+export { CONTACT, waLink };

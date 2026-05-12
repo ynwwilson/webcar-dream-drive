@@ -175,7 +175,7 @@ function SobrePage() {
               <MapPin className="h-4 w-4" /> Patos de Minas / MG
             </span>
             <span className="inline-flex items-center gap-2">
-              <Phone className="h-4 w-4" /> (34) 99999-9999
+              <Phone className="h-4 w-4" /> (34) 3814-1144
             </span>
           </div>
         </div>

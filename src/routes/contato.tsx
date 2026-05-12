@@ -1,9 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { MapPin, Phone, Clock } from "lucide-react";
+import { MapPin, Phone, Clock, Mail, Instagram, Facebook } from "lucide-react";
 import { SiteHeader } from "@/components/site/header";
 import { SiteFooter } from "@/components/site/footer";
-import { WhatsAppIcon } from "@/components/site/whatsapp-icon";
+import { WhatsAppIcon, waLink } from "@/components/site/whatsapp-icon";
+import { CONTACT } from "@/data/contact";
 
 export const Route = createFileRoute("/contato")({
   head: () => ({
@@ -24,7 +25,7 @@ function ContatoPage() {
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     const text = `Olá, sou ${form.nome} (${form.telefone}). ${form.mensagem}`;
-    window.open(`https://wa.me/5534999999999?text=${encodeURIComponent(text)}`, "_blank");
+    window.open(waLink(text), "_blank");
   };
 
   return (
@@ -67,7 +68,7 @@ function ContatoPage() {
                 className="w-full resize-none rounded-lg border bg-background px-4 py-3 text-sm text-brand outline-none focus:border-accent-blue"
               />
             </div>
-            <button type="submit" className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent-blue px-6 py-3.5 text-sm font-semibold text-white hover:brightness-110">
+            <button type="submit" className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-3.5 text-sm font-semibold text-white hover:bg-[#1da851]">
               <WhatsAppIcon className="h-4 w-4" /> Enviar via WhatsApp
             </button>
           </form>
@@ -81,7 +82,11 @@ function ContatoPage() {
                   </div>
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-widest text-brand/60">Endereço</p>
-                    <p className="mt-1 text-brand">Av. Brasil, 1234 — Centro<br />Patos de Minas / MG</p>
+                    <p className="mt-1 text-brand">
+                      {CONTACT.address.street}<br />
+                      {CONTACT.address.neighborhood} — {CONTACT.address.city}/{CONTACT.address.state}<br />
+                      CEP {CONTACT.address.zip}
+                    </p>
                   </div>
                 </li>
                 <li className="flex gap-4">
@@ -89,8 +94,21 @@ function ContatoPage() {
                     <Phone className="h-5 w-5" strokeWidth={1.5} />
                   </div>
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-widest text-brand/60">Telefone</p>
-                    <p className="mt-1 text-brand">(34) 99999-9999</p>
+                    <p className="text-xs font-semibold uppercase tracking-widest text-brand/60">Telefone & WhatsApp</p>
+                    <a href={`tel:+55${CONTACT.phone.raw}`} className="mt-1 block text-brand hover:underline">
+                      {CONTACT.phone.display}
+                    </a>
+                  </div>
+                </li>
+                <li className="flex gap-4">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-secondary text-accent-blue">
+                    <Mail className="h-5 w-5" strokeWidth={1.5} />
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-widest text-brand/60">Email</p>
+                    <a href={`mailto:${CONTACT.email}`} className="mt-1 block text-brand hover:underline">
+                      {CONTACT.email}
+                    </a>
                   </div>
                 </li>
                 <li className="flex gap-4">
@@ -99,16 +117,40 @@ function ContatoPage() {
                   </div>
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-widest text-brand/60">Horário</p>
-                    <p className="mt-1 text-brand">Seg–Sex 8h às 18h<br />Sáb 8h às 13h</p>
+                    <p className="mt-1 text-brand">
+                      {CONTACT.hours.weekdays}<br />
+                      {CONTACT.hours.saturday}<br />
+                      {CONTACT.hours.sunday}
+                    </p>
                   </div>
                 </li>
               </ul>
+              <div className="mt-6 flex gap-3 border-t pt-5">
+                <a
+                  href={CONTACT.social.instagram.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Instagram"
+                  className="inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-medium text-brand hover:border-brand/30"
+                >
+                  <Instagram className="h-4 w-4" /> {CONTACT.social.instagram.handle}
+                </a>
+                <a
+                  href={CONTACT.social.facebook.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Facebook"
+                  className="inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-medium text-brand hover:border-brand/30"
+                >
+                  <Facebook className="h-4 w-4" /> Facebook
+                </a>
+              </div>
             </div>
             <div className="overflow-hidden rounded-2xl border">
               {mapLoaded ? (
                 <iframe
                   title="Mapa WebCar Patos de Minas"
-                  src="https://www.google.com/maps?q=Patos+de+Minas+MG&output=embed"
+                  src={CONTACT.mapsEmbed}
                   width="100%"
                   height="280"
                   style={{ border: 0 }}
