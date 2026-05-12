@@ -169,8 +169,10 @@ function Index() {
           </div>
           {/* Porsche */}
           <img
-            src="/porsche.png"
+            src="/porsche.webp"
             alt=""
+            fetchPriority="high"
+            decoding="async"
             className="hero-porsche-img absolute inset-0 h-full w-full will-change-transform"
             style={{
               zIndex: 3,
