@@ -9,14 +9,21 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VenderVeiculoRouteImport } from './routes/vender-veiculo'
 import { Route as SobreRouteImport } from './routes/sobre'
 import { Route as SegurosRouteImport } from './routes/seguros'
 import { Route as FinanciamentoRouteImport } from './routes/financiamento'
+import { Route as FichaCadastralRouteImport } from './routes/ficha-cadastral'
 import { Route as EstoqueRouteImport } from './routes/estoque'
 import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as VeiculoIdRouteImport } from './routes/veiculo.$id'
 
+const VenderVeiculoRoute = VenderVeiculoRouteImport.update({
+  id: '/vender-veiculo',
+  path: '/vender-veiculo',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SobreRoute = SobreRouteImport.update({
   id: '/sobre',
   path: '/sobre',
@@ -30,6 +37,11 @@ const SegurosRoute = SegurosRouteImport.update({
 const FinanciamentoRoute = FinanciamentoRouteImport.update({
   id: '/financiamento',
   path: '/financiamento',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FichaCadastralRoute = FichaCadastralRouteImport.update({
+  id: '/ficha-cadastral',
+  path: '/ficha-cadastral',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EstoqueRoute = EstoqueRouteImport.update({
@@ -57,18 +69,22 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/contato': typeof ContatoRoute
   '/estoque': typeof EstoqueRoute
+  '/ficha-cadastral': typeof FichaCadastralRoute
   '/financiamento': typeof FinanciamentoRoute
   '/seguros': typeof SegurosRoute
   '/sobre': typeof SobreRoute
+  '/vender-veiculo': typeof VenderVeiculoRoute
   '/veiculo/$id': typeof VeiculoIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contato': typeof ContatoRoute
   '/estoque': typeof EstoqueRoute
+  '/ficha-cadastral': typeof FichaCadastralRoute
   '/financiamento': typeof FinanciamentoRoute
   '/seguros': typeof SegurosRoute
   '/sobre': typeof SobreRoute
+  '/vender-veiculo': typeof VenderVeiculoRoute
   '/veiculo/$id': typeof VeiculoIdRoute
 }
 export interface FileRoutesById {
@@ -76,9 +92,11 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/contato': typeof ContatoRoute
   '/estoque': typeof EstoqueRoute
+  '/ficha-cadastral': typeof FichaCadastralRoute
   '/financiamento': typeof FinanciamentoRoute
   '/seguros': typeof SegurosRoute
   '/sobre': typeof SobreRoute
+  '/vender-veiculo': typeof VenderVeiculoRoute
   '/veiculo/$id': typeof VeiculoIdRoute
 }
 export interface FileRouteTypes {
@@ -87,27 +105,33 @@ export interface FileRouteTypes {
     | '/'
     | '/contato'
     | '/estoque'
+    | '/ficha-cadastral'
     | '/financiamento'
     | '/seguros'
     | '/sobre'
+    | '/vender-veiculo'
     | '/veiculo/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/contato'
     | '/estoque'
+    | '/ficha-cadastral'
     | '/financiamento'
     | '/seguros'
     | '/sobre'
+    | '/vender-veiculo'
     | '/veiculo/$id'
   id:
     | '__root__'
     | '/'
     | '/contato'
     | '/estoque'
+    | '/ficha-cadastral'
     | '/financiamento'
     | '/seguros'
     | '/sobre'
+    | '/vender-veiculo'
     | '/veiculo/$id'
   fileRoutesById: FileRoutesById
 }
@@ -115,14 +139,23 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ContatoRoute: typeof ContatoRoute
   EstoqueRoute: typeof EstoqueRoute
+  FichaCadastralRoute: typeof FichaCadastralRoute
   FinanciamentoRoute: typeof FinanciamentoRoute
   SegurosRoute: typeof SegurosRoute
   SobreRoute: typeof SobreRoute
+  VenderVeiculoRoute: typeof VenderVeiculoRoute
   VeiculoIdRoute: typeof VeiculoIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/vender-veiculo': {
+      id: '/vender-veiculo'
+      path: '/vender-veiculo'
+      fullPath: '/vender-veiculo'
+      preLoaderRoute: typeof VenderVeiculoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sobre': {
       id: '/sobre'
       path: '/sobre'
@@ -142,6 +175,13 @@ declare module '@tanstack/react-router' {
       path: '/financiamento'
       fullPath: '/financiamento'
       preLoaderRoute: typeof FinanciamentoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ficha-cadastral': {
+      id: '/ficha-cadastral'
+      path: '/ficha-cadastral'
+      fullPath: '/ficha-cadastral'
+      preLoaderRoute: typeof FichaCadastralRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/estoque': {
@@ -179,9 +219,11 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ContatoRoute: ContatoRoute,
   EstoqueRoute: EstoqueRoute,
+  FichaCadastralRoute: FichaCadastralRoute,
   FinanciamentoRoute: FinanciamentoRoute,
   SegurosRoute: SegurosRoute,
   SobreRoute: SobreRoute,
+  VenderVeiculoRoute: VenderVeiculoRoute,
   VeiculoIdRoute: VeiculoIdRoute,
 }
 export const routeTree = rootRouteImport
