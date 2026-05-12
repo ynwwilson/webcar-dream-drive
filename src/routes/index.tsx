@@ -166,7 +166,7 @@ function Index() {
               Desde 2014 transformando vidas!
             </h2>
             <p className="hero-ui hero-ui-3 mt-3 max-w-[460px] text-[15px] leading-relaxed text-[#6B7280] md:mt-4">
-              Há 12 anos selecionando carros pra quem mora aqui. +1.000 chaves entregues.
+              Há 12 anos selecionando carros pra quem mora em Patos. +1.000 chaves entregues.
             </p>
           </div>
           {/* Porsche */}
