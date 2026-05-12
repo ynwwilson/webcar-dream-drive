@@ -125,7 +125,7 @@ function EstoquePage() {
       <FilterGroup label={`Preço até R$ ${maxPrice.toLocaleString("pt-BR")}`}>
         <input type="range" min={50000} max={STOCK_LIMITS.maxPrice} step={10000} value={maxPrice} onChange={(e) => setMaxPrice(+e.target.value)} className="w-full accent-[var(--accent-blue)]" />
         <div className="relative mt-2">
-          <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-sm text-muted-foreground">R$</span>
+          <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-sm font-medium text-muted-foreground">R$</span>
           <input
             type="text"
             inputMode="numeric"
@@ -135,7 +135,8 @@ function EstoquePage() {
               const v = digits ? parseInt(digits, 10) : 0;
               setMaxPrice(Math.min(STOCK_LIMITS.maxPrice, v));
             }}
-            className="filter-select pl-12"
+            className="filter-select"
+            style={{ paddingLeft: "2.25rem" }}
           />
         </div>
       </FilterGroup>
@@ -151,9 +152,10 @@ function EstoquePage() {
               const v = digits ? parseInt(digits, 10) : 0;
               setMaxKm(Math.min(STOCK_LIMITS.maxKm, v));
             }}
-            className="filter-select pr-12"
+            className="filter-select"
+            style={{ paddingRight: "2.5rem" }}
           />
-          <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-sm text-muted-foreground">km</span>
+          <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-sm font-medium text-muted-foreground">km</span>
         </div>
       </FilterGroup>
       <button onClick={reset} className="text-sm font-semibold text-accent-blue hover:underline">
