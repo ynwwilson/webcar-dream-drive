@@ -1,9 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { Calculator, FileCheck2, Banknote, Clock, ShieldCheck, CheckCircle2 } from "lucide-react";
 import { SiteHeader } from "@/components/site/header";
 import { SiteFooter } from "@/components/site/footer";
-import { WhatsAppIcon, WHATSAPP_URL } from "@/components/site/whatsapp-icon";
+import { WhatsAppIcon } from "@/components/site/whatsapp-icon";
 
 export const Route = createFileRoute("/financiamento")({
   head: () => ({
@@ -28,112 +27,132 @@ const formatBRL = (n: number) =>
   n.toLocaleString("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 });
 
 const beneficios = [
-  { icon: Clock, title: "Aprovação rápida", text: "Resposta em poucos minutos com as principais financeiras do país." },
-  { icon: Banknote, title: "Melhores taxas", text: "Negociamos por você condições competitivas e personalizadas." },
-  { icon: FileCheck2, title: "Documentação simples", text: "Cuidamos de toda a burocracia — você só precisa assinar e dirigir." },
-  { icon: ShieldCheck, title: "Segurança total", text: "Parcerias com instituições sólidas e contratos transparentes." },
+  {
+    title: "Agilidade",
+    text: "Resposta em minutos para você não perder a oportunidade do carro ideal.",
+    icon: (
+      <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+      </svg>
+    ),
+  },
+  {
+    title: "Segurança bancária",
+    text: "Parcerias com as principais instituições do país e contratos transparentes.",
+    icon: (
+      <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+      </svg>
+    ),
+  },
+  {
+    title: "Carência flexível",
+    text: "Primeira parcela em até 60 dias, conforme o seu perfil de crédito.",
+    icon: (
+      <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+  },
 ] as const;
 
 const passos = [
-  { n: "01", title: "Simule online", text: "Use o simulador ou nos chame no WhatsApp." },
-  { n: "02", title: "Envie seus dados", text: "Pré-aprovação com análise rápida e sem compromisso." },
-  { n: "03", title: "Aprove a proposta", text: "Escolha a melhor condição entre as financeiras parceiras." },
-  { n: "04", title: "Leve seu carro", text: "Assine o contrato e saia dirigindo no mesmo dia." },
+  { n: "01", title: "Escolha o modelo", text: "Selecione qualquer veículo do nosso estoque." },
+  { n: "02", title: "Simule e envie", text: "Preencha os dados básicos para a análise preliminar." },
+  { n: "03", title: "Aprovação digital", text: "Receba o retorno da análise 100% online." },
+  { n: "04", title: "Assine e leve", text: "Documentação pronta e chave na mão em poucos dias." },
 ] as const;
 
+const documentos = [
+  "RG ou CNH (digital ou físico)",
+  "Comprovante de residência atualizado",
+  "Comprovante de rendimentos (3 meses)",
+  "Ficha cadastral preenchida",
+];
+
 function FinanciamentoPage() {
-  const [valor, setValor] = useState(80000);
-  const [entrada, setEntrada] = useState(20000);
+  const [valor, setValor] = useState(180000);
+  const [entrada, setEntrada] = useState(54000);
   const [parcelas, setParcelas] = useState(48);
 
-  const { financiado, parcela, total } = useMemo(() => {
+  const { financiado, parcela, taxaMes, cetAno } = useMemo(() => {
     const fin = Math.max(valor - entrada, 0);
-    const i = 0.0179; // taxa estimada mensal
+    const i = 0.0179;
     const n = parcelas;
     const pmt = fin > 0 ? (fin * i) / (1 - Math.pow(1 + i, -n)) : 0;
-    return { financiado: fin, parcela: pmt, total: pmt * n + entrada };
+    const cet = (Math.pow(1 + i, 12) - 1) * 100;
+    return { financiado: fin, parcela: pmt, taxaMes: i * 100, cetAno: cet };
   }, [valor, entrada, parcelas]);
 
   const whatsappMsg = encodeURIComponent(
-    `Olá! Quero simular um financiamento.\n• Valor do veículo: ${formatBRL(valor)}\n• Entrada: ${formatBRL(entrada)}\n• Parcelas: ${parcelas}x\n• Parcela estimada: ${formatBRL(parcela)}`,
+    `Olá! Quero solicitar análise de crédito.\n• Valor do veículo: ${formatBRL(valor)}\n• Entrada: ${formatBRL(entrada)}\n• Parcelas: ${parcelas}x\n• Parcela estimada: ${formatBRL(parcela)}`,
   );
+  const whatsappHref = `https://wa.me/5534999999999?text=${whatsappMsg}`;
 
   return (
-    <div className="min-h-screen bg-background">
-      <SiteHeader />
+    <div className="min-h-screen bg-white text-[#0A0A0A]">
+      <SiteHeader transparentOnTop={false} />
 
       {/* Hero */}
-      <section className="relative overflow-hidden border-b bg-brand text-brand-foreground">
-        <div className="absolute inset-0 opacity-[0.07]" aria-hidden>
-          <div className="absolute -right-24 top-0 h-80 w-80 rounded-full bg-accent-blue blur-3xl" />
-          <div className="absolute -left-10 bottom-0 h-96 w-96 rounded-full bg-accent-blue blur-3xl" />
-        </div>
-        <div className="mx-auto max-w-7xl px-4 py-20 md:px-8 md:py-28">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-accent-blue">
-            Financiamento
-          </p>
-          <h1 className="mt-3 max-w-3xl text-4xl font-extrabold tracking-tight md:text-6xl">
-            Seu próximo carro, em parcelas que cabem no bolso.
-          </h1>
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg">
-            Trabalhamos com as principais financeiras do país para oferecer a melhor
-            condição para você. Simule abaixo ou fale com um especialista agora.
-          </p>
-        </div>
+      <section className="mx-auto max-w-7xl px-6 pt-20 pb-12 md:pt-28 md:pb-16">
+        <p className="eyebrow text-[12px] text-[#2E7CF6]">Financiamento WebCar</p>
+        <h1
+          className="mt-5 max-w-3xl text-4xl leading-[1.05] tracking-tight text-[#0A0A0A] md:text-6xl"
+          style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}
+        >
+          A conquista do seu próximo carro de forma{" "}
+          <span className="text-[#2E7CF6]">inteligente.</span>
+        </h1>
+        <p className="mt-6 max-w-xl text-base leading-relaxed text-[#6B7280] md:text-lg">
+          Taxas competitivas e aprovação ágil com as principais financeiras do país. Simule
+          agora e receba retorno em poucos minutos.
+        </p>
       </section>
 
       {/* Simulador */}
-      <section className="mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-20">
-        <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="rounded-3xl border bg-card p-8 md:p-10">
-            <div className="flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-accent-blue/10 text-accent-blue">
-                <Calculator className="h-5 w-5" strokeWidth={1.5} />
-              </div>
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-widest text-brand/60">
-                  Simulador
-                </p>
-                <h2 className="text-xl font-bold text-brand">Calcule sua parcela</h2>
-              </div>
-            </div>
+      <section className="mx-auto max-w-7xl px-6 pb-20 md:pb-28">
+        <div className="grid gap-8 lg:grid-cols-12">
+          {/* Inputs */}
+          <div className="rounded-3xl border border-[#EEF1F5] bg-[#F7F9FB] p-8 md:p-10 lg:col-span-7">
+            <h2 className="text-xl font-semibold text-[#0A0A0A]">Simulador de crédito</h2>
 
-            <div className="mt-8 space-y-7">
-              <FieldRange
+            <div className="mt-8 space-y-10">
+              <SliderField
                 label="Valor do veículo"
                 value={valor}
                 min={20000}
-                max={300000}
+                max={500000}
                 step={1000}
+                display={formatBRL(valor)}
                 onChange={setValor}
-                format={formatBRL}
               />
-              <FieldRange
+              <SliderField
                 label="Entrada"
                 value={entrada}
                 min={0}
                 max={Math.max(valor - 1000, 0)}
                 step={1000}
+                display={formatBRL(entrada)}
                 onChange={setEntrada}
-                format={formatBRL}
               />
+
               <div>
-                <div className="mb-3 flex items-baseline justify-between">
-                  <label className="text-xs font-semibold uppercase tracking-widest text-brand/70">
-                    Parcelas
-                  </label>
-                  <span className="text-sm font-bold text-brand">{parcelas}x</span>
+                <div className="mb-4 flex items-baseline justify-between">
+                  <label className="text-sm font-medium text-[#475569]">Parcelas</label>
+                  <span className="text-lg font-semibold tracking-tight text-[#0A0A0A]">
+                    {parcelas}x
+                  </span>
                 </div>
-                <div className="flex flex-wrap gap-2">
+                <div className="grid grid-cols-4 gap-2">
                   {[24, 36, 48, 60].map((p) => (
                     <button
                       key={p}
                       type="button"
                       onClick={() => setParcelas(p)}
-                      className={`rounded-full border px-4 py-2 text-sm font-semibold transition ${
+                      className={`rounded-lg border py-2.5 text-sm font-medium transition-colors ${
                         parcelas === p
-                          ? "border-accent-blue bg-accent-blue text-white"
-                          : "border-border bg-background text-brand hover:border-accent-blue"
+                          ? "border-[#2E7CF6] bg-[#2E7CF6] text-white"
+                          : "border-[#E2E8F0] bg-white text-[#0A0A0A] hover:border-[#2E7CF6]"
                       }`}
                     >
                       {p}x
@@ -144,132 +163,120 @@ function FinanciamentoPage() {
             </div>
           </div>
 
-          <div className="flex flex-col justify-between rounded-3xl bg-brand p-8 text-brand-foreground md:p-10">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-accent-blue">
-                Parcela estimada
-              </p>
-              <p className="mt-3 text-5xl font-extrabold tracking-tight md:text-6xl">
+          {/* Resultado */}
+          <div className="flex flex-col rounded-3xl bg-[#2E7CF6] p-8 text-white md:p-10 lg:col-span-5">
+            <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-white/70">
+              Resultado estimado
+            </p>
+            <div className="mt-6">
+              <span className="block text-xs text-white/70">Parcela mensal de</span>
+              <div
+                className="mt-1 text-5xl font-bold tracking-tight"
+                style={{ fontFamily: "var(--font-display)" }}
+              >
                 {formatBRL(parcela)}
-                <span className="ml-2 text-base font-medium text-white/60">/mês</span>
-              </p>
-              <p className="mt-2 text-xs text-white/50">
-                * Valores estimados. Sujeito à aprovação de crédito.
-              </p>
-
-              <dl className="mt-8 space-y-3 border-t border-white/10 pt-6 text-sm">
-                <Row k="Valor financiado" v={formatBRL(financiado)} />
-                <Row k="Entrada" v={formatBRL(entrada)} />
-                <Row k="Total a pagar" v={formatBRL(total)} />
-              </dl>
+              </div>
             </div>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a
-                href={`https://wa.me/5534999999999?text=${whatsappMsg}`}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-accent-blue px-6 py-3.5 text-sm font-semibold text-white transition hover:brightness-110"
-              >
-                <WhatsAppIcon className="h-4 w-4" /> Enviar simulação
-              </a>
-              <Link
-                to="/estoque"
-                className="inline-flex flex-1 items-center justify-center rounded-full border border-white/20 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-white/10"
-              >
-                Ver estoque
-              </Link>
-            </div>
+            <dl className="mt-8 space-y-4 border-t border-white/15 pt-6 text-sm">
+              <Row k="Valor financiado" v={formatBRL(financiado)} />
+              <Row k="Taxa de juros" v={`${taxaMes.toFixed(2)}% a.m.`} />
+              <Row k="CET anual" v={`${cetAno.toFixed(1)}%`} />
+            </dl>
+
+            <a
+              href={whatsappHref}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-8 inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-4 text-sm font-semibold text-[#2E7CF6] shadow-sm transition-colors hover:bg-blue-50"
+            >
+              <WhatsAppIcon className="h-4 w-4" />
+              Solicitar análise de crédito
+            </a>
+            <p className="mt-3 text-[11px] text-white/60">
+              * Valores estimados. Sujeito à aprovação de crédito.
+            </p>
           </div>
         </div>
       </section>
 
       {/* Benefícios */}
-      <section className="border-y bg-secondary/40">
-        <div className="mx-auto max-w-7xl px-4 py-20 md:px-8">
-          <div className="mb-12 max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-accent-blue">
-              Por que financiar com a WebCar
-            </p>
-            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-brand md:text-4xl">
-              Vantagens reais.
-            </h2>
-          </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {beneficios.map((b) => (
-              <div key={b.title} className="rounded-2xl border bg-card p-7 transition hover:-translate-y-1 hover:shadow-lg">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent-blue/10 text-accent-blue">
-                  <b.icon className="h-6 w-6" strokeWidth={1.5} />
-                </div>
-                <h3 className="mt-5 text-lg font-bold text-brand">{b.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{b.text}</p>
+      <section className="mx-auto max-w-7xl px-6 pb-20 md:pb-28">
+        <div className="grid gap-12 md:grid-cols-3">
+          {beneficios.map((b) => (
+            <div key={b.title}>
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-[#2E7CF6]">
+                {b.icon}
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Como funciona */}
-      <section className="mx-auto max-w-7xl px-4 py-20 md:px-8">
-        <div className="mb-12 max-w-2xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-accent-blue">
-            Como funciona
-          </p>
-          <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-brand md:text-4xl">
-            Em 4 passos simples.
-          </h2>
-        </div>
-        <ol className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {passos.map((p) => (
-            <li key={p.n} className="relative rounded-2xl border bg-card p-7">
-              <span className="text-sm font-extrabold tracking-widest text-accent-blue">
-                {p.n}
-              </span>
-              <h3 className="mt-3 text-lg font-bold text-brand">{p.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.text}</p>
-            </li>
+              <h3 className="mt-6 text-xl font-semibold text-[#0A0A0A]">{b.title}</h3>
+              <p className="mt-3 text-[15px] leading-relaxed text-[#6B7280]">{b.text}</p>
+            </div>
           ))}
-        </ol>
+        </div>
       </section>
 
-      {/* Documentos */}
-      <section className="mx-auto max-w-7xl px-4 pb-20 md:px-8">
-        <div className="grid gap-8 rounded-3xl border bg-card p-8 md:grid-cols-2 md:p-12">
+      {/* Como funciona + Documentos */}
+      <section className="bg-[#F7F9FB] py-20 md:py-28">
+        <div className="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-2 lg:gap-20">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-accent-blue">
-              Documentação
-            </p>
-            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-brand">
-              O que você precisa.
-            </h2>
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              Reúna os documentos abaixo para agilizar a análise. Para autônomos e
-              empresas a lista pode variar — fale com a gente.
-            </p>
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand px-5 py-3 text-sm font-semibold text-brand-foreground transition hover:brightness-110"
+            <h2
+              className="text-3xl font-semibold tracking-tight text-[#0A0A0A] md:text-4xl"
+              style={{ fontFamily: "var(--font-display)" }}
             >
-              <WhatsAppIcon className="h-4 w-4" /> Tirar dúvidas
-            </a>
+              Como funciona
+            </h2>
+            <ol className="mt-12 space-y-8">
+              {passos.map((p) => (
+                <li key={p.n} className="flex gap-6">
+                  <span
+                    className="text-4xl font-light text-[#CBD5E1]"
+                    style={{ fontFamily: "var(--font-display)" }}
+                  >
+                    {p.n}
+                  </span>
+                  <div>
+                    <h4 className="text-lg font-medium text-[#0A0A0A]">{p.title}</h4>
+                    <p className="mt-1 text-[15px] leading-relaxed text-[#6B7280]">{p.text}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
           </div>
-          <ul className="grid gap-3 text-sm text-brand">
-            {[
-              "RG e CPF",
-              "CNH (se possuir)",
-              "Comprovante de residência atualizado",
-              "Comprovante de renda (3 últimos)",
-              "Referências pessoais",
-              "Dados bancários",
-            ].map((d) => (
-              <li key={d} className="flex items-center gap-3 rounded-xl border bg-background px-4 py-3">
-                <CheckCircle2 className="h-5 w-5 text-accent-blue" strokeWidth={1.5} />
-                <span>{d}</span>
-              </li>
-            ))}
-          </ul>
+
+          <div className="rounded-3xl border border-[#EEF1F5] bg-white p-10 shadow-sm">
+            <h2
+              className="text-2xl font-semibold tracking-tight text-[#0A0A0A]"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              Documentos necessários
+            </h2>
+            <ul className="mt-8 space-y-5">
+              {documentos.map((d) => (
+                <li key={d} className="flex items-center gap-4">
+                  <span className="flex h-5 w-5 items-center justify-center rounded-full bg-blue-50">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#2E7CF6]" />
+                  </span>
+                  <span className="text-[15px] text-[#334155]">{d}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-10 rounded-2xl bg-[#F7F9FB] p-6">
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#94A3B8]">
+                Dica WebCar
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-[#475569]">
+                Para autônomos e PJ a documentação pode variar. Fale com nossos especialistas
+                para a lista completa.
+              </p>
+              <Link
+                to="/contato"
+                className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[#2E7CF6] hover:underline"
+              >
+                Falar com especialista →
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -280,37 +287,35 @@ function FinanciamentoPage() {
 
 function Row({ k, v }: { k: string; v: string }) {
   return (
-    <div className="flex items-center justify-between text-white/80">
-      <dt className="text-white/60">{k}</dt>
-      <dd className="font-semibold text-white">{v}</dd>
+    <div className="flex items-center justify-between">
+      <dt className="text-white/70">{k}</dt>
+      <dd className="font-medium">{v}</dd>
     </div>
   );
 }
 
-function FieldRange({
+function SliderField({
   label,
   value,
   min,
   max,
   step,
+  display,
   onChange,
-  format,
 }: {
   label: string;
   value: number;
   min: number;
   max: number;
   step: number;
+  display: string;
   onChange: (n: number) => void;
-  format: (n: number) => string;
 }) {
   return (
     <div>
-      <div className="mb-3 flex items-baseline justify-between">
-        <label className="text-xs font-semibold uppercase tracking-widest text-brand/70">
-          {label}
-        </label>
-        <span className="text-sm font-bold text-brand">{format(value)}</span>
+      <div className="mb-4 flex items-baseline justify-between">
+        <label className="text-sm font-medium text-[#475569]">{label}</label>
+        <span className="text-lg font-semibold tracking-tight text-[#0A0A0A]">{display}</span>
       </div>
       <input
         type="range"
@@ -319,12 +324,8 @@ function FieldRange({
         step={step}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="h-2 w-full cursor-pointer appearance-none rounded-full bg-secondary accent-[var(--accent-blue)]"
+        className="h-1.5 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-[#2E7CF6]"
       />
-      <div className="mt-1 flex justify-between text-[11px] text-muted-foreground">
-        <span>{format(min)}</span>
-        <span>{format(max)}</span>
-      </div>
     </div>
   );
 }
