@@ -135,7 +135,7 @@ function EstoquePage() {
               const v = digits ? parseInt(digits, 10) : 0;
               setMaxPrice(Math.min(STOCK_LIMITS.maxPrice, v));
             }}
-            className="filter-select pl-11"
+            className="filter-select pl-12"
           />
         </div>
       </FilterGroup>
