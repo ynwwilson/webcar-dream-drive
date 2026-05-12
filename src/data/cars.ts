@@ -17,7 +17,7 @@ export type Car = {
 };
 
 const img = (id: string) =>
-  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=1400&q=80`;
+  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=900&q=72`;
 
 export const cars: Car[] = [
   {
