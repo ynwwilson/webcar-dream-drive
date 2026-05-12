@@ -24,12 +24,12 @@ const brands = Array.from(new Set(cars.map((c) => c.brand))).sort();
 const fuels = Array.from(new Set(cars.map((c) => c.fuel)));
 const transmissions = Array.from(new Set(cars.map((c) => c.transmission)));
 
-// Limites dinâmicos baseados no estoque real (acompanha automaticamente quando carros são adicionados/removidos)
+// Limites dos filtros
 const STOCK_LIMITS = {
-  maxKm: Math.ceil(Math.max(...cars.map((c) => c.km)) / 10000) * 10000,
-  maxPrice: Math.ceil(Math.max(...cars.map((c) => c.price)) / 50000) * 50000,
-  minYear: Math.min(...cars.map((c) => c.year)),
-  maxYear: Math.max(...cars.map((c) => c.year)),
+  maxKm: 500000,
+  maxPrice: 1000000,
+  minYear: 2010,
+  maxYear: new Date().getFullYear() + 1,
 };
 
 // Mapeia arquivo da logo → nome da marca (precisa bater EXATO com c.brand em cars.ts)
@@ -109,12 +109,50 @@ function EstoquePage() {
       </FilterGroup>
       <FilterGroup label={`Ano a partir de ${minYear}`}>
         <input type="range" min={STOCK_LIMITS.minYear} max={STOCK_LIMITS.maxYear} value={minYear} onChange={(e) => setMinYear(+e.target.value)} className="w-full accent-[var(--accent-blue)]" />
+        <input
+          type="number"
+          min={STOCK_LIMITS.minYear}
+          max={STOCK_LIMITS.maxYear}
+          value={minYear}
+          onChange={(e) => {
+            const v = +e.target.value;
+            if (!Number.isFinite(v)) return;
+            setMinYear(Math.max(STOCK_LIMITS.minYear, Math.min(STOCK_LIMITS.maxYear, v)));
+          }}
+          className="filter-select mt-2"
+        />
       </FilterGroup>
-      <FilterGroup label={`Preço até R$ ${(maxPrice/1000).toFixed(0)}k`}>
-        <input type="range" min={50000} max={STOCK_LIMITS.maxPrice} step={5000} value={maxPrice} onChange={(e) => setMaxPrice(+e.target.value)} className="w-full accent-[var(--accent-blue)]" />
+      <FilterGroup label={`Preço até R$ ${maxPrice.toLocaleString("pt-BR")}`}>
+        <input type="range" min={50000} max={STOCK_LIMITS.maxPrice} step={10000} value={maxPrice} onChange={(e) => setMaxPrice(+e.target.value)} className="w-full accent-[var(--accent-blue)]" />
+        <input
+          type="number"
+          min={0}
+          max={STOCK_LIMITS.maxPrice}
+          step={1000}
+          value={maxPrice}
+          onChange={(e) => {
+            const v = +e.target.value;
+            if (!Number.isFinite(v)) return;
+            setMaxPrice(Math.max(0, Math.min(STOCK_LIMITS.maxPrice, v)));
+          }}
+          className="filter-select mt-2"
+        />
       </FilterGroup>
       <FilterGroup label={`KM até ${maxKm.toLocaleString("pt-BR")}`}>
         <input type="range" min={5000} max={STOCK_LIMITS.maxKm} step={5000} value={maxKm} onChange={(e) => setMaxKm(+e.target.value)} className="w-full accent-[var(--accent-blue)]" />
+        <input
+          type="number"
+          min={0}
+          max={STOCK_LIMITS.maxKm}
+          step={1000}
+          value={maxKm}
+          onChange={(e) => {
+            const v = +e.target.value;
+            if (!Number.isFinite(v)) return;
+            setMaxKm(Math.max(0, Math.min(STOCK_LIMITS.maxKm, v)));
+          }}
+          className="filter-select mt-2"
+        />
       </FilterGroup>
       <button onClick={reset} className="text-sm font-semibold text-accent-blue hover:underline">
         Limpar filtros
