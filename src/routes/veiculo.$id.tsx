@@ -165,17 +165,17 @@ function VeiculoPage() {
                 href={`${WHATSAPP_URL}%20-%20${encodeURIComponent(car.fullName)}`}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-4 text-base font-semibold text-white shadow-sm transition-colors hover:bg-[#1da851]"
+                className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full bg-[#25D366] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#1da851]"
               >
-                <WhatsAppIcon className="h-5 w-5" />
-                Proposta via Whatsapp
+                <WhatsAppIcon className="h-4 w-4" />
+                Proposta via WhatsApp
               </a>
               <button
                 type="button"
                 onClick={() => setSimulatorOpen(true)}
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-black px-6 py-4 text-base font-semibold text-white shadow-sm transition-colors hover:bg-neutral-800"
+                className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full bg-black px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-neutral-800"
               >
-                <Calculator className="h-5 w-5" />
+                <Calculator className="h-4 w-4" />
                 Simular Financiamento
               </button>
             </div>
