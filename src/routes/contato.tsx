@@ -19,6 +19,7 @@ export const Route = createFileRoute("/contato")({
 
 function ContatoPage() {
   const [form, setForm] = useState({ nome: "", telefone: "", email: "", mensagem: "" });
+  const [mapLoaded, setMapLoaded] = useState(false);
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -104,15 +105,25 @@ function ContatoPage() {
               </ul>
             </div>
             <div className="overflow-hidden rounded-2xl border">
-              <iframe
-                title="Mapa WebCar Patos de Minas"
-                src="https://www.google.com/maps?q=Patos+de+Minas+MG&output=embed"
-                width="100%"
-                height="280"
-                style={{ border: 0 }}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
+              {mapLoaded ? (
+                <iframe
+                  title="Mapa WebCar Patos de Minas"
+                  src="https://www.google.com/maps?q=Patos+de+Minas+MG&output=embed"
+                  width="100%"
+                  height="280"
+                  style={{ border: 0 }}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setMapLoaded(true)}
+                  className="flex h-[280px] w-full items-center justify-center bg-secondary text-sm font-semibold text-brand hover:bg-secondary/70"
+                >
+                  <MapPin className="mr-2 h-5 w-5" /> Carregar mapa
+                </button>
+              )}
             </div>
           </div>
         </div>
